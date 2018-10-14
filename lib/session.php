@@ -14,11 +14,17 @@ class Sess {
         }
     }
 
-    function logIn($user, $pass, $sess) {
+    function logIn($user, $pass) {
         if(isLoggedin()) {
-
+            return false;
         } else {
+            require_once('conn.php');
+            $conn = new Conn;
+            if($conn->conn()) {
 
+            } else {
+                return "Connection Error.";
+            }
         }
     }
 
