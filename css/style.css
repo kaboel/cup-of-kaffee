@@ -1,3 +1,98 @@
+@font-face {
+    font-family: 'oxygenregular';
+    src: url('../webfonts/oxygen-regular-webfont.woff2') format('woff2'),
+         url('../webfonts/oxygen-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+html, body, div, table, ul, h1, h2, p, span, input, label {
+    font-family: 'oxygenregular';
+}
+span { 
+    cursor: default;
+}
+a {
+    text-decoration: none;
+    color: inherit
+}
 body {
-    background-color: #D5C1A9;
+    background-color: #FFF;
+}
+.main-head {
+    background-color: #46291F;
+    margin-bottom: 20px;
+    color: transparent;
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
+    -webkit-background-clip: text;
+       -moz-background-clip: text;
+            background-clip: text;
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+       -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+            box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+}
+.main-foot {
+    background-color: #46291F;
+    padding: 40px;
+    text-align: center;
+    color: transparent;
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
+    -webkit-background-clip: text;
+       -moz-background-clip: text;
+            background-clip: text;
+}
+.main-foot .nav {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.main-foot .copyright {
+    font-size: 12px;
+    font-style: italic;
+    font-weight: bold;
+}
+.border-tes {
+    border: 1px solid #000;
+}
+.hyper-img {
+    cursor: pointer;
+}
+.hyper-nav {
+    border: 2px solid transparent;
+}
+.hyper-nav span {
+    cursor: pointer !important;
+}
+.nav-item {
+    font-weight: bold;
+}
+.main-head .nav-item span span {
+    font-size: 13px;
+    margin-left: 2px;
+}
+.main-head .hyper-nav:hover,
+.main-foot .hyper-nav:hover {
+    text-shadow: none;
+}
+.hyper-text {
+    cursor: pointer;
+}
+.put-bottom {
+    position: absolute;
+    bottom: 0;
+    right: 5%;
+}
+.wrap {
+    background-color: #46291F;
+    height: 1000px;
+    display: inline-block;
+}
+.side {
+    width: 17.5%;
+}
+.content {
+    width: 82%;
+}
+
+@media screen and (max-width: 600px) {
+  
 }
