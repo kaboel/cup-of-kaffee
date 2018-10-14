@@ -1,5 +1,5 @@
 <!--
-    * cup-of-kaffee v.1 (https://github.com/kaboel/cup-of-kaffee)
+    * cupofkaffee v.1 (https://github.com/kaboel/cupofkaffee)
     * Copyright 2018 faiq.kaboel@gmail.com | In Effect
 -->
 <?php
