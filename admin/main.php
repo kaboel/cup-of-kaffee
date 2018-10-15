@@ -1,1 +1,1 @@
-<button type="button">Logout</button>
+<button type="button" name="logout">Logout</button>

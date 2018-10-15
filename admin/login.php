@@ -9,7 +9,7 @@
     <div class="row" style="margin-top:2%;">
         <div class="col"></div>
         <div class="col-4">
-            <form method="POST" action="execLogin()" autocomplete="off">
+            <form id="loginForm" method="POST" action="" autocomplete="off">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default">
@@ -32,7 +32,7 @@
         <div class="col"></div>
     </div>
 </div>
-<div class="main-foot" style="position: absolute; bottom:0; left:37%;">
+<div class="main-foot" style="margin-top: 10%">
     <span class="copyright">&copy; 2018 <a href="#">.cupofkaffee.</a> | All Rights Reserved.</span>
 </div>
 

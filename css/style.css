@@ -1,3 +1,8 @@
+/*
+    * cupofkaffee v.1 (https://github.com/kaboel/cupofkaffee)
+    * Copyright 2018 faiq.kaboel@gmail.com | In Effect
+*/
+
 @font-face {
     font-family: 'oxygenregular';
     src: url('../webfonts/oxygen-regular-webfont.woff2') format('woff2'),
@@ -19,7 +24,7 @@ body {
     background-color: #FFF4E6;
 }
 .main-head {
-    background-color: #46291F;
+    background-color: #331400;
     margin-bottom: 20px;
     color: transparent;
     text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
@@ -31,7 +36,7 @@ body {
             box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
 }
 .main-foot {
-    background-color: #46291F;
+    background-color: #331400;
     padding: 40px;
     text-align: center;
     color: transparent;
@@ -81,7 +86,7 @@ body {
     right: 5%;
 }
 .wrap {
-    background-color: #46291F;
+    /* background-color: #331400; */
     height: 1000px;
     display: inline-block;
 }
@@ -95,7 +100,7 @@ body {
 .btn-kaffee:focus {
     outline: none !important;
     color: #DDD;
-    background-color: #46291F;
+    background-color: #331400;
 }
 .btn {
     font-weight: bold !important;
@@ -105,10 +110,16 @@ body {
     background-color: #7E4000;
 }
 .input-group-text {
-   background-color: #46291F !important;
+   background-color: #331400 !important;
    color: #DDD;
 }
-
+.form-control {
+    font-size: 0.85rem !important;
+    border: 1px solid #331400 !important; 
+}
+.input-group-text {
+    border: 1px solid #331400 !important
+}
 @media screen and (max-width: 600px) {
   
 }
