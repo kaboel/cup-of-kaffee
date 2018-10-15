@@ -2,9 +2,6 @@
     * cupofkaffee v.1 (https://github.com/kaboel/cupofkaffee)
     * Copyright 2018 faiq.kaboel@gmail.com | In Effect
 -->
-<?php
-
-?>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -24,3 +21,12 @@
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/main.js"></script>
 </html>
+
+<?php
+ERROR_REPORTING(E_ALL ^ E_NOTICE);
+include('../lib/core.php');
+
+$core = new Core;
+$core->loginVerify();
+
+?>

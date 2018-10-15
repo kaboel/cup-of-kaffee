@@ -1,6 +1,12 @@
-$(document).ready(function(_e){
-    loadLogin();
-});
-function loadLogin() {
-    $("#Contadmin").load("login.php")
-} 
+// ADMIN REMOTE
+function loadLoginAdm() {
+    $("#Contadmin").load("login.php");
+}
+function loadMainAdm() {
+    $("#Contadmin").load("main.php");
+}
+
+//ADMIN EXECS
+function logOut() {
+    
+}

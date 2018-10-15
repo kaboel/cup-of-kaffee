@@ -1,6 +1,6 @@
 <?php
 class Conn {
-    function conn() {
+    function __construct() {
         $host    = "127.0.0.1";
         $user    = "root";
         $pass    = "";

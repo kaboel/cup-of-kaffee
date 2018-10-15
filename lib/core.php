@@ -2,15 +2,19 @@
 include('conn.php');
 include('session.php');
 
-class Core extends Session {
+class Core {
 
-    function verify() {
+    public function loginVerify() {
         $sess = new Session;
-        if($sess->isLoggedin()) {
-            echo "<script>alert('Session Detected')</script>";
+        if($sess->sessionVerify()) {
+            echo "<script>loadMainAdm();</script>";
         } else {
-            echo "<script>alert('No Session Detected')</script>";
+            echo "<script>loadLoginAdm();</script>";
         }
+    }
+
+    public function logOut() {
+        
     }
 }
 ?>

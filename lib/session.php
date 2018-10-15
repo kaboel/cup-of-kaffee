@@ -1,7 +1,7 @@
 <?php
 class Session {
 
-    protected function isLoggedin() {
+    public function sessionVerify() {
         if(isset($_SESSION['user']) && isset($_SESSION['pass'])) {
             return true;
         } else {
@@ -9,21 +9,21 @@ class Session {
         }
     }
 
-    protected function logIn($user, $pass) {
+    public function sessionStart($user, $pass) {
         if(isLoggedin()) {
             return false;
         } else {
             require_once('conn.php');
             $conn = new Conn;
             if($conn->conn()) {
-                
+                return true;
             } else {
-                return "Connection Error.";
+                return false;
             }
         }
     }
 
-    protected function logOut() {
+    public function sessionDestroy() {
         session_unset();
         session_destroy();
         if(!isLoggedin()) {

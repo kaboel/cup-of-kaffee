@@ -4,7 +4,6 @@
          url('../webfonts/oxygen-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 html, body, div, table, ul, h1, h2, p, span, input, label {
     font-family: 'oxygenregular';
@@ -45,10 +44,10 @@ body {
     font-size: 30px;
     margin-bottom: 20px;
 }
-.main-foot .copyright {
+.copyright {
     font-size: 12px;
     font-style: italic;
-    font-weight: bold;
+    font-weight: bolder;
 }
 .border-tes {
     border: 1px solid #000;
@@ -94,14 +93,20 @@ body {
 }
 .btn-kaffee,
 .btn-kaffee:focus {
-    font-weight: bold;
     outline: none !important;
     color: #DDD;
     background-color: #46291F;
 }
+.btn {
+    font-weight: bold !important;
+}
 .btn-kaffee:hover {
     color: #DDD;
     background-color: #7E4000;
+}
+.input-group-text {
+   background-color: #46291F !important;
+   color: #DDD;
 }
 
 @media screen and (max-width: 600px) {
