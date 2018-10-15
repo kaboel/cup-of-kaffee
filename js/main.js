@@ -3,4 +3,4 @@ $(document).ready(function(_e){
 });
 function loadLogin() {
     $("#Contadmin").load("login.php")
-}
+} 

@@ -17,7 +17,7 @@ a {
     color: inherit
 }
 body {
-    background-color: #FFF;
+    background-color: #FFF4E6;
 }
 .main-head {
     background-color: #46291F;
@@ -91,6 +91,17 @@ body {
 }
 .content {
     width: 82%;
+}
+.btn-kaffee,
+.btn-kaffee:focus {
+    font-weight: bold;
+    outline: none !important;
+    color: #DDD;
+    background-color: #46291F;
+}
+.btn-kaffee:hover {
+    color: #DDD;
+    background-color: #7E4000;
 }
 
 @media screen and (max-width: 600px) {

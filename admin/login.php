@@ -1,28 +1,28 @@
+<?php
+ERROR_REPORTING(E_ALL ^ E_NOTICE);
+?>
 <div class="container">
-    <div class="row" style="margin-top:7.5%;">
+    <div class="row" style="margin-top:5%;">
         <div class="col"></div>
-        <div class="col-1">
+        <div class="col-2">
             <img src="../images/kaffee-barista.png" alt="" class="img-fluid">
         </div>
         <div class="col"></div>
     </div>
-    <div class="row" style="margin-top:7.5%;">
+    <div class="row" style="margin-top:1.5%;">
         <div class="col"></div>
-        <div class="col-3">
-            <div class="text-center">
-                <p style="color: #BBB;">
-                    .login.
-                </p>
-            </div>
+        <div class="col-4">
+            <form id="Login">
             <div style="margin-bottom: 5px;">
-                <input class="form-control" type="text" placeholder="Input your username">
+                <input class="form-control" name="user" type="text" placeholder="Username here">
             </div>
             <div style="margin-bottom: 15px;">
-                <input class="form-control" type="password" placeholder="Input your password">
+                <input class="form-control" name="pass" type="password" placeholder="Password here">
             </div>
-            <div style="margin-top: 15px;">
-                <button type="button" class="btn btn-kaffee">Login</button>
+            <div style="margin-top: 15px;" class="text-center">
+                <button type="button" class="btn btn-kaffee form-control">Login</button>
             </div>
+            <form>
         </div>
         <div class="col"></div>
     </div>

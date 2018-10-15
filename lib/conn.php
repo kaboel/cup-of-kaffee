@@ -12,7 +12,7 @@ class Conn {
             return false;
             exit;
         }
-
+        
         return true;
         mysqli_close($link);
     }
