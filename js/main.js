@@ -6,12 +6,18 @@
 // MAIN REMOTE 
 
 
-// ADMIN REMOTE
+// ADMIN INDEX REMOTE
 function loadLoginAdm() {
-    $("#Contadmin").load("login.php");
+    $("#admIdx").load("login.php");
 }
 function loadMainAdm() {
-    $("#Contadmin").load("main.php");
+    $("#admIdx").load("main.php");
+}
+
+// ADMIN PAGES REMOTE
+function __load(param) {
+    var target  = param+".php";
+    $("#admPgs").load(target);    
 }
 
 // ADMIN EXECS
@@ -29,15 +35,18 @@ $(function(_e) {
             url:    '../lib/handler.php',
             success: function(_e) {
                 reset();
-                location.reload();
-                alert(_e);
+                if(_e == "1") {
+                    location.reload(true);
+                } else {
+                    alert(_e);
+                }
             }
         });
     });
 });
 
 $(function(_e){
-    $("button[name='logout']").on('click', function(_e){
+    $("#logoutTrig").on('click', function(_e){
         _e.preventDefault();
         var exec = "logoutReq";
 
@@ -46,8 +55,11 @@ $(function(_e){
             data:   "exec="+exec,
             url:    '../lib/handler.php',
             success: function(_e){
-                location.reload();
-                alert(_e);
+                if(_e == true) {
+                    location.reload(true);
+                } else {
+                    alert("Server Error. Cannot Logout.");
+                }
             }
         });
     });

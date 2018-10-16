@@ -37,7 +37,7 @@ class Core {
             $count = $sqls->num_rows;
             $data  = $sqls->fetch_assoc();
             if($count == 1) {
-                
+
                 $sqli = sprintf(
                     "UPDATE t_user SET 
                      LAST_LOGIN = NOW()
@@ -53,13 +53,13 @@ class Core {
                     $_SESSION['pass'] = $data['PASSWORD'];
                     return "1";
                 } else {
-                    return "0";
+                    return "Level[2] SQL ERROR - Cannot Login.";
                 }
             } else {
-                return "0";
+                return "Invalid username or password.";
             }
         } else {
-            return "-1";
+            return "Level[1] SQL ERROR - Cannot Login.";
         }
         $link->close();
     }

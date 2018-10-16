@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="../css/bootstrap.css">
 <link rel="stylesheet" href="../css/all.css">
 <link rel="stylesheet" href="../css/style.css">
-<body id="Contadmin">
+<body id="admIdx">
     <!-- REMOTE -->
 </body>
 <script src="../js/jquery-min.js"></script>
