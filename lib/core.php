@@ -53,13 +53,13 @@ class Core {
                     $_SESSION['pass'] = $data['PASSWORD'];
                     return "1";
                 } else {
-                    return "Level[2] SQL ERROR - Cannot Login.";
+                    return "SQL[2]ERRNO - Cannot Login.";
                 }
             } else {
                 return "Invalid username or password.";
             }
         } else {
-            return "Level[1] SQL ERROR - Cannot Login.";
+            return "SQL[1]ERRNO - Cannot Login.";
         }
         $link->close();
     }

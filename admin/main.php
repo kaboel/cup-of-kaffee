@@ -1,13 +1,22 @@
 <div class="side wrap menu-panel">
-    <div class="menu-panel-head">
-        <img src="../images/kaffee-barista.png" alt="">
-    </div>
     <div class="menu-panel-menu">
         <ul class="v-menu">
-            <li>Dashboard</li>
-            <li>Admin Priviledges</li>
-            <li>Master Data</li>
-            <li id="logoutTrig">Logout</li>
+            <li>
+                <i class="fas fa-tachometer-alt"> </i>
+                <span>Dashboard</span>
+            </li>
+            <li>
+                <i class="fas fa-wrench"> </i>
+                <span>Priviledges</span>
+            </li>
+            <li>
+                <i class="fas fa-power-off"> </i>
+                <span>Master Data</span>
+            </li>
+            <li id="logoutTrig">
+                <i class="fas fa-power-off"> </i>
+                <span>Logout</span>
+            </li>
         </ul>
     </div>
 </div>
