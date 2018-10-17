@@ -10,7 +10,7 @@
                 <span>Priviledges</span>
             </li>
             <li>
-                <i class="fas fa-power-off"> </i>
+                <i class="fa fa-database"> </i>
                 <span>Master Data</span>
             </li>
             <li id="logoutTrig">

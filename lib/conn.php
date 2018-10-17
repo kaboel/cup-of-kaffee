@@ -1,22 +1,22 @@
 <?php
 class Conn {
 
-   private static $_dbUser  = 'root';
-   private static $_dbPass  = '';
-   private static $_dbDB    = 'cupakaffee';
-   private static $_dbHost  = '127.0.0.1';
-   private static $_dbConn  = NULL;
+   private static $__User = 'root';
+   private static $__Pass = '';
+   private static $__Name = 'cupakaffee';
+   private static $__Host = '127.0.0.1';
+   private static $__Conn = NULL;
 
    public function __construct() { }
 
-    public function Start() {
-        if (!self::$_dbConn) {
-            self::$_dbConn = new mysqli(self::$_dbHost, self::$_dbUser, self::$_dbPass, self::$_dbDB);
-            if (self::$_dbConn -> connect_error) {
-                die('Connect Error: ' . self::$_dbConn->connect_error);
+    public function __init() {
+        if (!self::$__Conn) {
+            self::$__Conn = new mysqli(self::$__Host, self::$__User, self::$__Pass, self::$__Name);
+            if (self::$__Conn -> connect_error) {
+                die('Connect Error: ' . self::$__Conn->connect_error);
             }
         }
-        return self::$_dbConn;
+        return self::$__Conn;
     }
 }
 ?>

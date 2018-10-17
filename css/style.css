@@ -161,12 +161,15 @@ body {
 }
 .v-menu li i {
     float: left;
+    cursor: pointer;
     font-size: 1.1rem;
     margin-left: 7.5px;
     margin-right: 15px;
     color: #331400;
 }
-
+.v-menu li span {
+    cursor: pointer;
+}
 
 @media screen and (max-width: 600px) {
   

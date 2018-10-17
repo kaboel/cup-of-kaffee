@@ -1,4 +1,7 @@
 <?php
+session_start([
+    'cookie_lifetime' => 7200,
+]);
 include('conn.php');
 
 class Core {
@@ -6,7 +9,6 @@ class Core {
     public function __construct() { }
 
     private static function __sesVerify() {
-        session_start();
         if(isset($_SESSION['uid']) && isset($_SESSION['user']) && isset($_SESSION['pass'])) {
             return true;
         } else {
@@ -24,7 +26,7 @@ class Core {
 
     public function __loginExec($user, $pass) {
         $conn = new Conn;
-        $link = $conn->Start();
+        $link = $conn->__init();
         $sqls = sprintf(
             "SELECT ID_USER, USERNAME, PASSWORD
             FROM t_user
@@ -47,7 +49,7 @@ class Core {
                      , $data['PASSWORD']               
                 );
                 if($sqli = $link->query($sqli)) {
-                    session_start();
+
                     $_SESSION['uid']  = $data['ID_USER'];
                     $_SESSION['user'] = $data['USERNAME'];
                     $_SESSION['pass'] = $data['PASSWORD'];
@@ -67,7 +69,6 @@ class Core {
     public function __loginExit() {
         if(self::__sesVerify()) {
             session_unset();
-            session_destroy();
             if(!self::__sesVerify()) {
                 return true;
             } else {
