@@ -32,7 +32,7 @@ $(function(_e) {
         $.ajax({
             type:   'POST',
             data:   'exec='+exec+'&user='+user+'&pass='+pass,
-            url:    '../lib/handler.php',
+            url:    '../lib/handler',
             success: function(_e) {
                 reset();
                 if(_e == "1") {
@@ -53,7 +53,7 @@ $(function(_e){
         $.ajax({
             type:   "POST",
             data:   "exec="+exec,
-            url:    '../lib/handler.php',
+            url:    '../lib/handler',
             success: function(_e){
                 if(_e == true) {
                     location.reload(true);

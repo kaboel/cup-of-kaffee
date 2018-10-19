@@ -24,26 +24,17 @@ body {
     background-color: #FFF4E6;
 }
 .main-head {
-    background-color: #331400;
+    background-color: #FFF4E6;
     margin-bottom: 20px;
-    color: transparent;
-    text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
-    -webkit-background-clip: text;
-       -moz-background-clip: text;
-            background-clip: text;
+    color: #875625;
     -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
        -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
             box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
 }
 .main-foot {
-    background-color: #331400;
     padding: 40px;
     text-align: center;
-    color: transparent;
-    text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
-    -webkit-background-clip: text;
-       -moz-background-clip: text;
-            background-clip: text;
+    color: #875625;
 }
 .main-foot .nav {
     font-size: 30px;
@@ -76,6 +67,7 @@ body {
 .main-head .hyper-nav:hover,
 .main-foot .hyper-nav:hover {
     text-shadow: none;
+    color: #331400;
 }
 .hyper-text {
     cursor: pointer;
