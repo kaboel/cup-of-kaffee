@@ -15,12 +15,19 @@
 <link rel="stylesheet" href="../css/bootstrap.css">
 <link rel="stylesheet" href="../css/all.css">
 <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/jquery-ui.css">
+<link rel="stylesheet" href="../css/jquery-ui.structure.css">
+
 <body id="admIdx">
     <!-- REMOTE -->
+    <div id="dialog">
+        <!-- REMOTE -->
+    </div>
 </body>
 <script src="../js/jquery-min.js"></script>
 <script src="../js/main.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery-ui.min.js"></script>
 </html>
 
 <?php

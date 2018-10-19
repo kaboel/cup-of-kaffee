@@ -38,35 +38,60 @@ $(function(_e) {
                 if(_e == "1") {
                     location.reload(true);
                 } else {
-                    alert(_e);
+                    alert("loginMsg", "Login Failed ! ", _e);
                 }
             }
         });
     });
 });
 
+
 $(function(_e){
     $("#logoutTrig").on('click', function(_e){
-        _e.preventDefault();
-        var exec = "logoutReq";
 
-        $.ajax({
-            type:   "POST",
-            data:   "exec="+exec,
-            url:    '../lib/handler',
-            success: function(_e){
-                if(_e == true) {
-                    location.reload(true);
-                } else {
-                    alert("Server Error. Cannot Logout.");
-                }
-            }
+        $("#dialog").dialog({
+            title : "Hello"
         });
+
+        // _e.preventDefault();
+        // var exec = "logoutReq";
+
+        // $.ajax({
+        //     type:   "POST",
+        //     data:   "exec="+exec,
+        //     url:    '../lib/handler',
+        //     success: function(_e){
+        //         if(_e == true) {
+        //             location.reload(true);
+        //         } else {
+        //             alert(_e);
+        //         }
+        //     }
+        // });
     });
 });
 
 // OTHER
+$(function(_e) {
+    $( document ).tooltip();
+});
+
 function reset() {
     $("input[type='text']").val("");
     $("input[type='password']").val("");
+}
+
+
+//ERR
+function alert(target, info, msg) {
+    var obj =    "<div class='alert alert-danger alert-dismissible fade show' role='alert'>"
+                +"  <div>"
+                +"     <strong>"+ info +"</strong></br>"
+                +"     <span>"+ msg +"</span>"
+                +"  </div>"
+                +"  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>"
+                +"      <span aria-hidden='true'>&times;</span>"
+                +"  </button>"
+                +"</div>";
+    $("#"+target).append(obj);
 }

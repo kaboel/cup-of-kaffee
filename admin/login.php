@@ -31,8 +31,15 @@
         </div>
         <div class="col"></div>
     </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-4" id="loginMsg">
+            <!-- REMOTE -->
+        </div>
+        <div class="col"></div>
+    </div>
 </div>
-<div class="main-foot" style="margin-top: 10%">
+<div class="main-foot" style="margin-top: 7.5%">
     <span class="copyright">&copy; 2018 <a href="#">.cupofkaffee.</a> | All Rights Reserved.</span>
 </div>
 

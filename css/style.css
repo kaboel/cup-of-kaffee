@@ -16,6 +16,9 @@ html, body, div, table, ul, h1, h2, p, span, input, label {
 span { 
     cursor: default;
 }
+button span {
+    cursor: pointer;
+}
 a {
     text-decoration: none;
     color: inherit
@@ -115,51 +118,55 @@ body {
 }
 .admin-menu {
     width: 4%;
+    background-color: #331400;
 }
 .admin-sub-menu {
     width: 14%;
-    background-color: #331400;
+    background-color: #D4CCB7;
 }
 .admin-content {
     width: 81%;
-}
-.menu-panel {
-    background-color: #7E4000;
 }
 .menu-panel-menu {
     padding-top: 10px;
     margin-top: 10px;
 }
-.v-menu, .s-menu {
+.p-menu, .s-menu {
     padding: 0;
     list-style: none;
 }
-.v-menu li {
+.p-menu li {
     font-weight: bolder;
     cursor: pointer;
     margin-top: -1px;   
-    border-top: 1px solid #875625;
-    border-bottom: 1px solid #875625;
+    border-top: 1px solid #3d2711;
+    border-bottom: 1px solid #3d2711;
     padding: 0.50rem;
     font-size: 0.80rem;
-    color: #331400;
+    color: #CCC;
     text-align: left;
 }
-.v-menu li:hover,
-.v-menu li:active {
-    background-color: #331400;
+.p-menu li:hover,
+.p-menu li:active {
+    background-color: #875625;
     color: #FFF4E6;
 }
-.v-menu li i {
+.p-menu li i {
     cursor: pointer;
     font-size: 1.1rem;
     margin-left: 7.5px;
     margin-right: 15px;
 }
-.v-menu li span {
+.p-menu li span {
     cursor: pointer;
 }
-
+.p-menu #logoutTrig {
+    color: #fc9c9c;
+}
+.p-menu #logoutTrig:hover,
+.p-menu #logoutTrig:active {
+    color: #ff6d6d
+}
 @media screen and (max-width: 600px) {
   
 }

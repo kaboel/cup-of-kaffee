@@ -58,7 +58,7 @@ class Core {
                     return "SQL[2]ERRNO - Cannot Login.";
                 }
             } else {
-                return "Invalid username or password.";
+                return "Invalid Username or Password.";
             }
         } else {
             return "SQL[1]ERRNO - Cannot Login.";

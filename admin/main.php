@@ -1,6 +1,6 @@
-<div class="admin-menu menu-panel wrap">
+<div class="admin-menu wrap">
     <div class="menu-panel-menu">
-        <ul class="v-menu">
+        <ul class="p-menu">
             <li>
                 <i class="fas fa-tachometer-alt"> </i>
             </li>
@@ -10,7 +10,7 @@
             <li>
                 <i class="fa fa-database"> </i>
             </li>
-            <li id="logoutTrig">
+            <li id="logoutTrig" title="Logout">
                 <i class="fas fa-power-off"></i>
             </li>
         </ul>
