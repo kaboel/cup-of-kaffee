@@ -22,6 +22,7 @@ function __load(param) {
 
 // ADMIN EXECS
 // --> Session Controls
+// Login
 $(function(_e) {
     $("#loginForm").on('submit', function(_e) {
         _e.preventDefault();
@@ -44,30 +45,47 @@ $(function(_e) {
         });
     });
 });
-
-
+// Logout
 $(function(_e){
     $("#logoutTrig").on('click', function(_e){
-
-        $("#dialog").dialog({
-            title : "Hello"
+        var exec = "logoutReq";
+        var obj = "<div> Are you sure you want to go ? </div>";
+        $(obj).dialog({
+            modal: true,
+            resizable: false,
+            draggable: false,
+            title : ".barista.",
+            buttons: [
+                {
+                    text: "Yes, Log Me Out.",
+                    click: function(_e) {
+                        $.ajax({
+                            type:   "POST",
+                            data:   "exec="+exec,
+                            url:    '../lib/handler',
+                            success: function(_e){
+                                if(_e == true) {
+                                    location.reload(true);
+                                } else {
+                                    alert(_e);
+                                }
+                            }
+                        });
+                        $( this ).dialog( "close" );
+                    }
+                } ,
+                {
+                    text: "Cancel",
+                    click: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            ],
+            position: { 
+                my: "center",
+                at: "top+25%"
+            }
         });
-
-        // _e.preventDefault();
-        // var exec = "logoutReq";
-
-        // $.ajax({
-        //     type:   "POST",
-        //     data:   "exec="+exec,
-        //     url:    '../lib/handler',
-        //     success: function(_e){
-        //         if(_e == true) {
-        //             location.reload(true);
-        //         } else {
-        //             alert(_e);
-        //         }
-        //     }
-        // });
     });
 });
 
@@ -80,7 +98,6 @@ function reset() {
     $("input[type='text']").val("");
     $("input[type='password']").val("");
 }
-
 
 //ERR
 function alert(target, info, msg) {

@@ -1,13 +1,13 @@
 <?php
 class Conn {
 
-   private static $__User = 'root';
-   private static $__Pass = '';
-   private static $__Name = 'cupakaffee';
-   private static $__Host = '127.0.0.1';
-   private static $__Conn = NULL;
+    private static $__User = 'root';
+    private static $__Pass = '';
+    private static $__Name = 'cupakaffee';
+    private static $__Host = '127.0.0.1';
+    private static $__Conn = NULL;
 
-   public function __construct() { }
+    public function __construct() { }
 
     public function __init() {
         if (!self::$__Conn) {

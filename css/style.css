@@ -167,6 +167,15 @@ body {
 .p-menu #logoutTrig:active {
     color: #ff6d6d
 }
+
+
+
+/* OVERRIDE */
+.ui-dialog-titlebar-close {
+    display: none !important;
+}
+
+
 @media screen and (max-width: 600px) {
   
 }
