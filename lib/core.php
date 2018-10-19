@@ -1,6 +1,6 @@
 <?php
 session_start([
-    'cookie_lifetime' => 7200,
+    'cookie_lifetime' => 10800,
 ]);
 include('conn.php');
 
