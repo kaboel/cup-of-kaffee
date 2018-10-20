@@ -39,7 +39,7 @@
         <div class="col"></div>
     </div>
 </div>
-<div class="main-foot" style="margin-top: 7.5%">
+<div class="main-foot">
     <span class="copyright">&copy; 2018 <a href="#">.cupofkaffee.</a> | All Rights Reserved.</span>
 </div>
 
