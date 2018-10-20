@@ -15,10 +15,17 @@ function loadMainAdm() {
 }
 
 // ADMIN PAGES REMOTE
-function __load(param) {
+function __loadMenu(param) {
+
+}
+function __loadSubMenu(param) {
+
+}
+function __loadPage(param) {
     var target  = param+".php";
     $("#admPgs").load(target);    
 }
+
 
 // ADMIN EXECS
 // --> Session Controls
@@ -35,21 +42,21 @@ $(function(_e) {
             data:   'exec='+exec+'&user='+user+'&pass='+pass,
             url:    '../lib/handler',
             success: function(_e) {
-                reset();
+                clrFrm("login");
                 if(_e == "1") {
-                    location.reload(true);
+                    location.reload();
                 } else {
-                    alert("loginMsg", "Login Failed ! ", _e);
+                    msgOut("loginMsg", "Login Failed ! ", _e);
                 }
             }
         });
     });
 });
 // Logout
-$(function(_e){
+$(function(_e) {
     $("#logoutTrig").on('click', function(_e){
         var exec = "logoutReq";
-        var obj = "<div> Are you sure you want to go ? </div>";
+        var obj = "<div> You sure you want to go ? </div>";
         $(obj).dialog({
             modal: true,
             resizable: false,
@@ -57,7 +64,7 @@ $(function(_e){
             title : ".barista.",
             buttons: [
                 {
-                    text: "Yes, Log Me Out.",
+                    text: "Yes, Log Me Out",
                     click: function(_e) {
                         $.ajax({
                             type:   "POST",
@@ -81,26 +88,29 @@ $(function(_e){
                     }
                 }
             ],
-            position: { 
-                my: "center",
-                at: "top+25%"
-            }
+            position: { my: "center", at: "top+25%" }
         });
     });
 });
 
 // OTHER
 $(function(_e) {
-    $( document ).tooltip();
+    $( document ).tooltip({    
+        position: { my: "left+10 center", at: "right center" }
+    });
 });
 
-function reset() {
-    $("input[type='text']").val("");
-    $("input[type='password']").val("");
+function clrFrm(type) {
+    switch(type) {
+        case "login" : 
+            $("input[type='text']").val("");
+            $("input[type='password']").val("");
+        break;
+    }
 }
 
-//ERR
-function alert(target, info, msg) {
+function msgOut(target, info, msg) {
+    var box = $("#"+target);
     var obj =    "<div class='alert alert-danger alert-dismissible fade show' role='alert'>"
                 +"  <div>"
                 +"     <strong>"+ info +"</strong></br>"
@@ -110,5 +120,5 @@ function alert(target, info, msg) {
                 +"      <span aria-hidden='true'>&times;</span>"
                 +"  </button>"
                 +"</div>";
-    $("#"+target).append(obj);
+    box.append(obj);
 }

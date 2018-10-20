@@ -33,5 +33,4 @@ include('../lib/core.php');
 
 $core = new Core;
 $core->__loginVerify();
-
 ?>

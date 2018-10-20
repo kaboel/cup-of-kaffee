@@ -1,13 +1,13 @@
 <div class="admin-menu wrap">
     <div class="menu-panel-menu">
         <ul class="p-menu">
-            <li>
+            <li title="Dashboard">
                 <i class="fas fa-tachometer-alt"> </i>
             </li>
-            <li>
+            <li title="Main Control">
                 <i class="fas fa-wrench"> </i>
             </li>
-            <li>
+            <li title="Master Data">
                 <i class="fa fa-database"> </i>
             </li>
             <li id="logoutTrig" title="Logout">
@@ -19,16 +19,16 @@
     <div class="menu-panel-menu">
         <ul class="s-menu">
             <li>
-                <i class="fas fa-tachometer-alt"> </i>
+                
             </li>
             <li>
-                <i class="fas fa-wrench"> </i>
+                
             </li>
             <li>
-                <i class="fa fa-database"> </i>
+                
             </li>
-            <li id="logoutTrig">
-                <i class="fas fa-power-off"></i>
+            <li>
+                
             </li>
         </ul>
     </div>
