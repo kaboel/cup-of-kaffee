@@ -16,6 +16,25 @@ class Core {
         }
     }
 
+    private static function __getUsrInfo($param) {
+        $conn   = new Conn;
+        $link   = $conn->__init();
+        $sql    = sprintf(
+                "SELECT *
+                 FROM t_user 
+                 WHERE USERNAME = '%s'
+                 AND PASSWORD = '%s'"
+                , $_SESSION['user']
+                , $_SESSION['pass']
+        );
+        if($sql = $link->query($sql)) {
+            $data = $sql->fetch_assoc();
+            return $data[$param];
+        } else {
+            return "0";
+        }
+    }
+
     public function __loginVerify() {
         if(self::__sesVerify()) {
             echo "<script>loadMainAdm();</script>";
@@ -39,7 +58,6 @@ class Core {
             $count = $sqls->num_rows;
             $data  = $sqls->fetch_assoc();
             if($count == 1) {
-
                 $sqli = sprintf(
                     "UPDATE t_user SET 
                      LAST_LOGIN = NOW()
@@ -49,7 +67,6 @@ class Core {
                      , $data['PASSWORD']               
                 );
                 if($sqli = $link->query($sqli)) {
-
                     $_SESSION['uid']  = $data['ID_USER'];
                     $_SESSION['user'] = $data['USERNAME'];
                     $_SESSION['pass'] = $data['PASSWORD'];
@@ -75,6 +92,28 @@ class Core {
                 return false;
             }
         }
+    }
+
+    public function __loadMenu() {
+        $conn   = new Conn;
+        $link   = $conn->__init();
+        $permit = self::__getUsrInfo("PERMIT");
+
+        $sql    = sprintf(
+                "SELECT ID_MENU, ID_SUPER, TITLE, ICON, PATH
+                 FROM t_menu
+                 WHERE PERMIT <= '%d'"
+                , $permit
+        );        
+        if($sql = $link->query($sql)) {
+            while($arr = $sql->fetch_assoc()) {
+                $data[] = $arr;
+            }
+            return json_encode($data);
+        } else {
+            return "0";
+        }
+        
     }
 }
 ?>

@@ -113,11 +113,11 @@ body {
     border: 1px solid #331400 !important
 }
 .admin-menu {
-    width: 4%;
+    width: 4.4%;
     background-color: #331400;
 }
 .admin-sub-menu {
-    width: 14%;
+    width: 13.6%;
     background-color: #D4CCB7;
 }
 .admin-content {
@@ -157,11 +157,14 @@ body {
     cursor: pointer;
 }
 .p-menu #logoutTrig {
-    color: #fc9c9c;
+    color: #fc9c9c !important;
 }
 .p-menu #logoutTrig:hover,
 .p-menu #logoutTrig:active {
-    color: #ff6d6d
+    color: #ff6d6d !important;
+}
+.gap-20 {
+    margin-top : 20px;
 }
 
 
