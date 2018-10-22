@@ -67,20 +67,20 @@ function loginExec() {
                     location.reload();
                 } else {
                     msgOut(
-                            "loginMsg",         // Target
-                            "danger",           // Alert Type
-                            "Login Failed ! ",  // Strong (Output)
-                            _e                  // Details (Output)
+                        "loginMsg",         // Target
+                        "danger",           // Alert Type
+                        "Login Failed ! ",  // Strong (Output)
+                        _e                  // Details (Output)
                     );
                 }
             }
         });
     } else {
         msgOut( 
-                "loginMsg", 
-                "warning", 
-                "Can't Proceed !", 
-                "Please fill all columns."
+            "loginMsg", 
+            "warning", 
+            "Can't Proceed !", 
+            "Please fill all columns."
         );
     }
 }
@@ -157,7 +157,6 @@ function clrFrm(type) {
 
 function msgOut(target, type, info, msg) {
     var box = $("#"+target);
-    box.show();
     switch(type) {
         case "danger" :
             type = "alert-danger";
@@ -179,7 +178,8 @@ function msgOut(target, type, info, msg) {
                 +"  </button>"
                 +"</div>";
     box.html(obj);
+    box.show();
     if(box.is(':visible')) {
-        box.fadeOut({ duration: 2500 });
+        box.fadeOut({ duration: 3000 });
     }
 }
