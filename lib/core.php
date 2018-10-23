@@ -100,7 +100,7 @@ class Core {
         $permit = self::__getUsrInfo("PERMIT");
 
         $sql    = sprintf(
-                "SELECT ID_MENU, ID_SUPER, TITLE, ICON, PATH
+                "SELECT ID_MENU, ID_SUPER, TITLE, STR_ID, ICON, PATH
                  FROM t_menu
                  WHERE PERMIT <= '%d'"
                 , $permit

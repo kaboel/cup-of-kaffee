@@ -27,7 +27,7 @@ function __loadMenu() {
             var obj = JSON.parse(_e);
             var list = "";
             $.each(obj, function(_key, _val) {
-                list += "<li title='"+ _val['TITLE'] +"' >"
+                list += "<li id='"+ _val['STR_ID'] +"' title='"+ _val['TITLE'] +"' >"
                      +      "<i class='"+ _val['ICON'] +"'></i>"
                      +  "</li>" 
             });
@@ -126,6 +126,12 @@ function logoutExec() {
 }
 
 // OTHER
+$( document ).click(function(_e) {
+    if($(".sub-menu").hasClass( "menu-collapse" )) {
+        $(".sub-menu").removeClass( "menu-collapse" );
+    }
+});
+
 $(function(_e) {
     $( document ).tooltip({    
         position: { my: "left+10 center", at: "right center" }

@@ -43,13 +43,13 @@ body {
     font-size: 30px;
     margin-bottom: 20px;
 }
+.gap-20 {
+    margin-top : 20px;
+}
 .copyright {
     font-size: 12px;
     font-style: italic;
     font-weight: bolder;
-}
-.border-tes {
-    border: 1px solid #000;
 }
 .hyper-img {
     cursor: pointer;
@@ -113,19 +113,54 @@ body {
     border: 1px solid #331400 !important
 }
 .admin-menu {
-    width: 4.4%;
-    background-color: #331400;
+    position: relative;
+    width: 19%;
+    display: flex;
 }
-.admin-sub-menu {
-    width: 13.6%;
-    background-color: #D4CCB7;
+.menu-panel-menu {
+    display: inline-block;
+}
+.main-menu {
+    z-index:2;
+    width: 22.5%;
+    background-color: #331400;
+    -webkit-box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.75);
+         box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.75);
+    
+}
+.main-menu .logo {
+    cursor: pointer;
+    margin: 7px;
+    padding: 7px;
+    border-radius: 3px;
+    background-color: #D5C1AA;
+    -webkit-box-shadow: inset 0px 0px 2px 0px rgba(51,20,0,1);
+    -moz-box-shadow: inset 0px 0px 2px 0px rgba(51,20,0,1);
+    box-shadow: inset 0px 0px 2px 0px rgba(51,20,0,1);
+}
+.sub-menu {
+    z-index: 1;
+    margin-top: 21.5%;
+    position: absolute;
+    height: auto;
+    padding: 30px 0 30px 0;
+    width: 100%;
+    margin-left: -90%;
+    transition: .5s ease;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background-color: rgba(51, 20, 0, 0.75);
+    -webkit-box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.75);
+       -moz-box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.75);
+            box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.75);
+}
+.menu-collapse {
+    margin-left: 15% !important;
 }
 .admin-content {
     width: 81%;
-}
-.menu-panel-menu {
-    padding-top: 10px;
-    margin-top: 10px;
+    z-index: -2;
 }
 .p-menu, .s-menu {
     padding: 0;
@@ -139,7 +174,7 @@ body {
     border-bottom: 1px solid #3d2711;
     padding: 0.50rem;
     font-size: 0.80rem;
-    color: #CCC;
+    color: #777;
     text-align: left;
 }
 .p-menu li:hover,
@@ -163,10 +198,24 @@ body {
 .p-menu #logoutTrig:active {
     color: #ff6d6d !important;
 }
-.gap-20 {
-    margin-top : 20px;
-}
 
+.s-menu {
+    margin-bottom: 0;
+}
+.s-menu li {
+    cursor: pointer;
+    color: #AAA;
+    font-weight: bolder;
+    font-size: 0.80rem;
+    padding: 7px 30px 7px 30px;
+    margin-top: -1px;   
+    border-top: 1px solid #594436;
+    border-bottom: 1px solid #594436;
+}
+.s-menu li:hover {
+    background-color: #3d2711;
+    color: #EEE;
+}
 
 
 /* OVERRIDE */
