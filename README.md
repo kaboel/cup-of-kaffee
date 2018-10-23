@@ -1,3 +1,3 @@
-# .cupofkaffee.
+# .cupofkaffee
 
-if ya don't get it, don't sweat about it, i ain't building this for u anyway *\*giggles*
+Long story short, there's no story to tell ehe *|*giggles*
