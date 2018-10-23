@@ -37,7 +37,9 @@
         <div class="col"></div>
     </div>
 </div>
-<div class="main-foot">
+<div class="main-foot" style="position: absolute;
+                              bottom: 0 !important;
+                              width: 100%;">
     <span class="copyright">&copy; 2018 <a href="#">.cupofkaffee.</a> | All Rights Reserved.</span>
 </div>
 <script>
