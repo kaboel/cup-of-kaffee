@@ -1,4 +1,9 @@
 <?php
+//
+//  * cupofkaffee v.1 (https://github.com/kaboel/cupofkaffee)
+//  * Copyright 2018 faiq.kaboel@gmail.com | In Effect
+//
+
 session_start([
     'cookie_lifetime' => 10800,
 ]);
@@ -37,9 +42,9 @@ class Core {
 
     public function __loginVerify() {
         if(self::__sesVerify()) {
-            echo "<script>loadMainAdm();</script>";
+            echo "<script>loadAdm('main');</script>";
         } else {
-            echo "<script>loadLoginAdm();</script>";
+            echo "<script>loadAdm('login');</script>";
         }
     }
 

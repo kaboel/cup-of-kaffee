@@ -878,6 +878,7 @@ button.ui-button::-moz-focus-inner {
 	position: absolute;
 	z-index: 9999;
 	max-width: 300px;
+	font-size: 0.7rem !important;
 }
 body .ui-tooltip {
 	border-width: 2px;

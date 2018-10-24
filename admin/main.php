@@ -7,13 +7,20 @@
             <!-- REMOTE -->
         </ul>
     </div>
-    <div class="menu-panel-menu sub-menu">
+    <div id="subContainer" class="menu-panel-menu sub-menu">
+        <div class="logo">
+            <span>.barista.</span><br>
+            <i>Control panel</i>
+        </div>
         <ul class="s-menu" id="subMenu">
             <!-- REMOTE -->
         </ul>
     </div>
-<div id="admPgs" class="admin-content wrap">
-    asasdasdas
+</div>
+<div id="admPgs" onclick="dismissSub()" class="admin-content wrap">
+<div style="width:100%; height: 20px; background: brown;">
+    asasa
+</div>
     <!-- REMOTE -->
 </div>
 <script>

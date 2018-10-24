@@ -7,11 +7,9 @@
 
 
 // ADMIN INDEX REMOTE
-function loadLoginAdm() {
-    $("#admIdx").load("login.php");
-}
-function loadMainAdm() {
-    $("#admIdx").load("main.php");
+function loadAdm(target) {
+    target = target+".php";
+    $("#admIdx").load(target);
 }
 
 // ADMIN PAGES REMOTE
@@ -34,7 +32,7 @@ function __loadMenu() {
             list += "<li id='logoutTrig' onclick='logoutExec()' title='Logout'>"
                  +      "<i class='fas fa-power-off'></i>"
                  +  "</li>";
-            cont.html(list);
+            cont.empty().append(list);
         }
     });
 }
@@ -53,9 +51,13 @@ function __loadSubMenu(parent) {
                 $.each(obj, function(_key, _val) {
                     list += "<li>"+ _val['TITLE'] +"</li>";
                 });
-                cont.html(list);
+                cont.empty().append(list);
             }
         });
+    } else {
+        if($(".sub-menu").hasClass( "menu-collapse" )) {
+            $(".sub-menu").removeClass( "menu-collapse" );
+        }
     }
 }
 function __loadPage(param) {
@@ -142,22 +144,24 @@ function logoutExec() {
     });
 }
 
-// OTHER
-
-
-$( document ).click(function(_e) {
-    if($(".sub-menu").hasClass( "menu-collapse" )) {
-        $(".sub-menu").removeClass( "menu-collapse" );
+// OTHER(S)
+function dismissSub() {
+    if($("#subContainer").hasClass( "menu-collapse" )) {
+        $("#subContainer").removeClass( "menu-collapse" );
     }
-});
-
+}
 function toggleSub() {
-    $(".sub-menu").toggleClass( "menu-collapse" );
+    $("#subContainer").toggleClass( "menu-collapse" );
 }
 
 $(function(_e) {
     $( document ).tooltip({    
-        position: { my: "left+10 center", at: "right center" }
+        position: { my: "left+10 center", at: "right center" },
+        show: { effect: "fadeIn", duration: 200 },
+        hide: { effect: "fadeOut", duration: 200 }
+        // open: function(event, ui) {
+        //     ui.tooltip.delay(5000).fadeTo(2000, 0);
+        // }
     });
 });
 
