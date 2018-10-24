@@ -53,9 +53,9 @@ class Core {
         $link = $conn->__init();
         $sqls = sprintf(
             "SELECT ID_USER, USERNAME, PASSWORD
-            FROM t_user
-            WHERE USERNAME = '%s'
-            AND PASSWORD = '%s'"
+             FROM t_user
+             WHERE USERNAME = '%s'
+             AND PASSWORD = '%s'"
             , $user
             , $pass                
         );
@@ -68,8 +68,8 @@ class Core {
                      LAST_LOGIN = NOW()
                      WHERE USERNAME = '%s'
                      AND PASSWORD = '%s'"
-                     , $data['USERNAME']
-                     , $data['PASSWORD']               
+                    , $data['USERNAME']
+                    , $data['PASSWORD']               
                 );
                 if($sqli = $link->query($sqli)) {
                     $_SESSION['uid']  = $data['ID_USER'];

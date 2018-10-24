@@ -18,8 +18,13 @@
     </div>
 </div>
 <div id="admPgs" onclick="dismissSub()" class="admin-content wrap">
-<div style="width:100%; height: 20px; background: brown;">
-    asasa
+<div class="top-bar">
+    <span onclick="" class="applet" title="Settings">
+        <i class="fas fa-user-cog"></i><b> Kaboel</b>
+    </span>
+    <span onclick="logoutExec()" class="applet" title="Logout">
+        <i class="fas fa-power-off"></i>
+    </span>
 </div>
     <!-- REMOTE -->
 </div>

@@ -146,6 +146,7 @@ body {
     width: 200px;
     margin-left: -210px;
     transition: .3s ease;
+    transition-delay: .1s;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     background-color: rgba(51, 20, 0, 0.90);
@@ -186,7 +187,7 @@ body {
     border-bottom: 1px solid #2d1200;
     padding: 20%;
     font-size: 0.80rem;
-    color: #777;
+    color: #DDD;
     text-align: center;
 }
 .p-menu li:hover,
@@ -233,6 +234,38 @@ body {
 .s-menu li:hover {
     transition: .2s ease-in-out;
 }
+.top-bar {
+    position: fixed;
+    width: 95.5%;
+    font-size: 0.8rem;
+    text-align: right;
+    padding: 4px 7px 4px 0;
+    background-color: #331400;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 4px;
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+       -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+            box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+}
+.applet {
+    cursor: pointer;
+    border: none;
+    padding: 4px;
+    margin-left : 2px;
+    margin-right: 2px;
+    transition: all .2s ease-in-out;
+    background: transparent;
+    outline: none;
+    color: #DDD;
+}
+.applet:hover {
+    color:#FFF4E6;
+    text-shadow:1px 1px 10px #DDD, 1px 1px 10px #ccc;
+}
+.applet b {
+    font-size: 0.7rem !important;
+}
+
 
 /* OVERRIDE */
 .ui-dialog-titlebar-close {

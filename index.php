@@ -67,7 +67,7 @@
                 </span>
             </li>
         </ul>
-        <span class="copyright">&copy; 2018 <a href="#">.cupofkaffee.</a> | All Rights Reserved.</span>
+        <span class="copyright"><i class="far fa-copyright"></i> 2018 <a href="#">.cupofkaffee.</a> | All Rights Reserved.</span>
     </div>
 </body>
 <script src="js/jquery-min.js"></script>
