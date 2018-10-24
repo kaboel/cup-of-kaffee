@@ -42,4 +42,15 @@
         //echo
         exit;
     }
+
+    if(isset($_GET['exec']) && $_GET['exec'] === "loadSub") {
+        $core = new Core;
+        $parent = $_GET['parent'];
+        if($core->__loadSub($parent) == "1"){
+            echo "Pass";
+        }
+        
+        //echo  
+        exit;
+    }
 ?>

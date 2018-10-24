@@ -102,7 +102,8 @@ class Core {
         $sql    = sprintf(
                 "SELECT ID_MENU, ID_SUPER, TITLE, STR_ID, ICON, PATH
                  FROM t_menu
-                 WHERE PERMIT <= '%d'"
+                 WHERE PERMIT <= '%d'
+                 AND ID_SUPER <= '0'"
                 , $permit
         );        
         if($sql = $link->query($sql)) {
@@ -113,7 +114,25 @@ class Core {
         } else {
             return "0";
         }
-        
+    }
+
+    public function __loadSub($parent) {
+        $conn = new Conn;
+        $link = $conn->__init();
+        $sql = sprintf(
+            "SELECT ID_MENU, ID_SUPER, TITLE, STR_ID, PATH
+             FROM t_menu
+             WHERE ID_SUPER = %d"
+            , $parent
+        );
+        if($sql = $link->query($sql)) {
+            while($arr = $sql->fetch_assoc()) {
+                $arr[] = $arr;
+            }
+            return json_encode($arr);
+        } else {
+            return "0";
+        }
     }
 }
 ?>

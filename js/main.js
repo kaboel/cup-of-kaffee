@@ -27,7 +27,7 @@ function __loadMenu() {
             var obj = JSON.parse(_e);
             var list = "";
             $.each(obj, function(_key, _val) {
-                list += "<li id='"+ _val['STR_ID'] +"' title='"+ _val['TITLE'] +"' >"
+                list += "<li id='"+ _val['STR_ID'] +"' onclick='__loadSubMenu(2)'  title='"+ _val['TITLE'] +"'>"
                      +      "<i class='"+ _val['ICON'] +"'></i>"
                      +  "</li>" 
             });
@@ -38,8 +38,22 @@ function __loadMenu() {
         }
     });
 }
-function __loadSubMenu(param) {
+function __loadSubMenu(parent) {
+    var exec = "loadSub";
+    var cont = $("#subMenu");
 
+    $.ajax({
+        type : 'GET',
+        data : 'exec='+exec+'&parent='+parent,
+        url  : '../lib/handler',
+        success : function(_e) {
+            var obj = JSON.parse(_e);
+            var list = "";
+            $.each(obj, function(_key, _val) {
+                
+            });
+        }
+    });
 }
 function __loadPage(param) {
     var target  = param+".php";
@@ -126,6 +140,8 @@ function logoutExec() {
 }
 
 // OTHER
+
+
 $( document ).click(function(_e) {
     if($(".sub-menu").hasClass( "menu-collapse" )) {
         $(".sub-menu").removeClass( "menu-collapse" );
