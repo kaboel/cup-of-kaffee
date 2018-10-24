@@ -46,8 +46,11 @@
     if(isset($_GET['exec']) && $_GET['exec'] === "loadSub") {
         $core = new Core;
         $parent = $_GET['parent'];
-        if($core->__loadSub($parent) == "1"){
-            echo "Pass";
+        $data = $core->__loadSub($parent);
+        if($data != "0") {
+            echo $data;
+        } else {
+            echo "0";
         }
         
         //echo  

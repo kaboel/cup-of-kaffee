@@ -27,7 +27,7 @@ function __loadMenu() {
             var obj = JSON.parse(_e);
             var list = "";
             $.each(obj, function(_key, _val) {
-                list += "<li id='"+ _val['STR_ID'] +"' onclick='__loadSubMenu(2)'  title='"+ _val['TITLE'] +"'>"
+                list += "<li id='"+ _val['STR_ID'] +"' onclick='__loadSubMenu("+_val['ID_MENU']+")'  title='"+ _val['TITLE'] +"'>"
                      +      "<i class='"+ _val['ICON'] +"'></i>"
                      +  "</li>" 
             });
@@ -41,19 +41,22 @@ function __loadMenu() {
 function __loadSubMenu(parent) {
     var exec = "loadSub";
     var cont = $("#subMenu");
-
-    $.ajax({
-        type : 'GET',
-        data : 'exec='+exec+'&parent='+parent,
-        url  : '../lib/handler',
-        success : function(_e) {
-            var obj = JSON.parse(_e);
-            var list = "";
-            $.each(obj, function(_key, _val) {
-                
-            });
-        }
-    });
+    if(parent > 1) {
+        $.ajax({
+            type : 'GET',
+            data : 'exec='+exec+'&parent='+parent,
+            url  : '../lib/handler',
+            success : function(_e) {
+                toggleSub();  
+                var obj = JSON.parse(_e);
+                var list = "";
+                $.each(obj, function(_key, _val) {
+                    list += "<li>"+ _val['TITLE'] +"</li>";
+                });
+                cont.html(list);
+            }
+        });
+    }
 }
 function __loadPage(param) {
     var target  = param+".php";
@@ -147,6 +150,10 @@ $( document ).click(function(_e) {
         $(".sub-menu").removeClass( "menu-collapse" );
     }
 });
+
+function toggleSub() {
+    $(".sub-menu").toggleClass( "menu-collapse" );
+}
 
 $(function(_e) {
     $( document ).tooltip({    

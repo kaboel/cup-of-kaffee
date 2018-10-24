@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 23, 2018 at 08:33 PM
+-- Generation Time: Oct 24, 2018 at 10:10 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -111,7 +111,8 @@ CREATE TABLE `t_menu` (
 INSERT INTO `t_menu` (`ID_MENU`, `ID_SUPER`, `TITLE`, `STR_ID`, `ICON`, `PATH`, `PERMIT`) VALUES
 (0, 0, 'Dashboard', 'dashBoard', 'fas fa-tachometer-alt', 'dshbrd', 0),
 (2, 0, 'Main Control', 'mainControl', 'fas fa-cogs', 'pg_control', 0),
-(3, 0, 'Master Data', 'masterData', 'fa fa-database', 'pg_master', 1);
+(3, 0, 'Master Data', 'masterData', 'fa fa-database', 'pg_master', 1),
+(4, 2, 'Company Profile', 'cpControl', '', 'index', 0);
 
 -- --------------------------------------------------------
 
@@ -137,7 +138,7 @@ CREATE TABLE `t_user` (
 --
 
 INSERT INTO `t_user` (`ID_USER`, `USERNAME`, `PASSWORD`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `CREATED`, `LAST_LOGIN`, `PERMIT`, `DELETE`) VALUES
-(1, 'kaboel', 'df85f55abd44e5343a7d4a71154521a2', NULL, NULL, NULL, NULL, '2018-10-24 01:17:29', 1, 0);
+(1, 'kaboel', 'df85f55abd44e5343a7d4a71154521a2', NULL, NULL, NULL, NULL, '2018-10-24 14:01:47', 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -218,7 +219,7 @@ ALTER TABLE `m_stock`
 -- AUTO_INCREMENT for table `t_menu`
 --
 ALTER TABLE `t_menu`
-  MODIFY `ID_MENU` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_MENU` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `t_user`

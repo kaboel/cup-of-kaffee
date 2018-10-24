@@ -100,7 +100,7 @@ class Core {
         $permit = self::__getUsrInfo("PERMIT");
 
         $sql    = sprintf(
-                "SELECT ID_MENU, ID_SUPER, TITLE, STR_ID, ICON, PATH
+                "SELECT ID_MENU, TITLE, STR_ID, ICON, PATH
                  FROM t_menu
                  WHERE PERMIT <= '%d'
                  AND ID_SUPER <= '0'"
@@ -111,6 +111,7 @@ class Core {
                 $data[] = $arr;
             }
             return json_encode($data);
+            die();
         } else {
             return "0";
         }
@@ -127,9 +128,10 @@ class Core {
         );
         if($sql = $link->query($sql)) {
             while($arr = $sql->fetch_assoc()) {
-                $arr[] = $arr;
+                $data[] = $arr;
             }
-            return json_encode($arr);
+            return json_encode($data);
+            die();
         } else {
             return "0";
         }

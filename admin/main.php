@@ -9,18 +9,7 @@
     </div>
     <div class="menu-panel-menu sub-menu">
         <ul class="s-menu" id="subMenu">
-            <li>
-                Muhammad Faiq Allam
-            </li>
-            <li>
-                Kaboel jancok
-            </li>
-            <li>
-                Taek mlecer
-            </li>
-            <li>
-                pendek
-            </li>
+            <!-- REMOTE -->
         </ul>
     </div>
 <div id="admPgs" class="admin-content wrap">
