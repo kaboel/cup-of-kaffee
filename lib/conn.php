@@ -1,6 +1,6 @@
 <?php
 class Conn {
-
+// DB CONTROL
     private static $__User = "root";
     private static $__Pass = "";
     private static $__Name = "cupakaffee";

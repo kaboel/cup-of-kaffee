@@ -1,11 +1,26 @@
+#   ---
+#    * cupofkaffee v.1 (https://github.com/kaboel/cupofkaffee)
+#    * Copyright 2018 faiq.kaboel@gmail.com | In Effect
+#   ---
+
+Options -Indexes
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    ErrorDocument 403 /cupofkaffee/errors/index.php?errno=403
+    ErrorDocument 404 /cupofkaffee/errors/index.php?errno=404
+    ErrorDocument 500 /cupofkaffee/errors/index.php?errno=500
+
     RewriteBase /cupofkaffee/
     RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.php [NC]
     RewriteRule ^ %1 [R=301,L]
+    
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME}.php -f
     RewriteRule ^(.*?)/?$ $1.php [NC,L]
+
     RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
     RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,NE,L]
 </IfModule>
+

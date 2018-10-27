@@ -1,8 +1,3 @@
-<?php
-require_once('../lib/core.php');
-$core = new Core;
-$core::__pgVerify();
-?>
 <div class="admin-menu wrap">
     <div class="menu-panel-menu main-menu">
         <div class="logo">
@@ -36,5 +31,14 @@ $core::__pgVerify();
     </div>
 </div>
 <script>
-        tes()
+$(function(_e){
+    __loadMenu();
+})
 </script>
+
+<?php
+error_reporting(E_ALL ^ E_NOTICE);
+require_once('../lib/core.php');
+$core = new Core;
+$core::__locVerify();
+?>

@@ -49,6 +49,11 @@ $(function(_e) {
     });
 });
 </script>
+
 <?php
-ERROR_REPORTING(E_ALL ^ E_NOTICE);
+error_reporting(E_ALL ^ E_NOTICE);
+require_once('../lib/core.php');
+$core = new Core;
+$core::__locVerify();
+
 ?>

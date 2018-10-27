@@ -3,7 +3,6 @@
 //  * cupofkaffee v.1 (https://github.com/kaboel/cupofkaffee)
 //  * Copyright 2018 faiq.kaboel@gmail.com | In Effect
 //
-
 session_start([
     'cookie_lifetime' => 10800,
 ]);
@@ -14,19 +13,57 @@ class Core {
     public function __construct() { }
 
     public static function __sesVerify() {
-        if(isset($_SESSION['uid']) && isset($_SESSION['user']) && isset($_SESSION['pass'])) {
-            return true;
+        return ( 
+            isset($_SESSION['uid']) && 
+            isset($_SESSION['user']) && 
+            isset($_SESSION['pass'])
+        );
+    }
+
+    public static function __httpVerify() {
+        return (isset($_SERVER['HTTP_REFERER']));
+    } 
+
+    // public static function __accVerify() {
+    //     if(isset($_SESSION['pgac'])) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+
+    public static function __locVerify() {
+        $uri = "http://127.0.0.1:8080/cupofkaffee/forbid";
+        if(!self::__httpVerify()) {
+            header('header("HTTP/1.1 403 Forbidden', true, 403);
+            header('Location: ../errors/oops?');
+        }
+
+        // if(self::__accVerify()) {
+        //     if($_SESSION['pgac'] != $param) {
+        //         header('location:index.php');
+        //         die();
+        //     } else {
+        //         $_SESSION['pgac'] = "0";
+        //     }
+        // } else {
+        //     $_SESSION['pgac'] = "0";
+        //     header("Refresh:0; url=index.php");
+        // }
+    } 
+
+    public static function __loginVerify() {
+        // $_SESSION['pgac'] = "0";
+
+        if(self::__sesVerify()) {
+            // $_SESSION['pgac'] = "admMain";
+            echo "<script>loadAdm('main');</script>";
         } else {
-            return false;
+            // $_SESSION['pgac'] = "admLogin";
+            echo "<script>loadAdm('login');</script>";
         }
     }
 
-    public static function __pgVerify() {
-        if(isset($_SESSION['uid']) && isset($_SESSION['user']) && isset($_SESSION['pass'])) {
-            echo "<script>window.location.assign('index.php');</script>";
-            die();
-        } 
-    }
     public static function __getUsrInfo($param) {
         $conn   = new Conn;
         $link   = $conn->__init();
@@ -44,15 +81,7 @@ class Core {
         } else {
             return "0";
         }
-    }
-
-    public function __loginVerify() {
-        if(self::__sesVerify()) {
-            echo "<script>loadAdm('main');</script>";
-        } else {
-            echo "<script>loadAdm('login');</script>";
-        }
-    }
+    }  
 
     public function __loginExec($user, $pass) {
         $conn = new Conn;
@@ -115,6 +144,7 @@ class Core {
     public function __loginExit() {
         if(self::__sesVerify()) {
             session_unset();
+            session_destroy();
             if(!self::__sesVerify()) {
                 return true;
             } else {

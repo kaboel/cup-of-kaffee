@@ -14,23 +14,6 @@ function loadAdm(target) {
 }
 
 // ADMIN PAGES REMOTE
-function tes() {
-    var exec = "sessionVerify";
-
-    $.ajax({
-        type: 'GET',
-        data: 'exec='+exec,
-        url : '../lib/handler',
-        success : function(_e) {
-            if(_e != 1) {
-                alert("cok");
-            }
-        }
-    });
-
-    return false;
-}
-
 function __loadMenu() {
     var exec = "loadMenu";
     var cont = $("#mainMenu");
