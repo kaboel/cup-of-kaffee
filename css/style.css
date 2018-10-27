@@ -145,11 +145,11 @@ body {
     height: 100%;
     width: 200px;
     margin-left: -210px;
-    transition: .3s ease;
+    transition: .4s ease-in-out;
     transition-delay: .1s;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    background-color: rgba(51, 20, 0, 0.90);
+    background-color: rgba(51, 20, 0, 0.95);
     -webkit-box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.75);
        -moz-box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.75);
             box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.75);
@@ -183,8 +183,8 @@ body {
     font-weight: bolder;
     cursor: pointer;
     margin-top: -1px;   
-    border-top: 1px solid #2d1200;
-    border-bottom: 1px solid #2d1200;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
     padding: 20%;
     font-size: 0.80rem;
     color: #DDD;
@@ -222,8 +222,8 @@ body {
     font-size: 0.75rem;
     padding: 7px 30px 7px 30px;
     margin-top: -1px;   
-    border-top: 1px solid #3d2711;
-    border-bottom: 1px solid #3d2711;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
 }
 .s-menu li:hover {
     background-color: #683520;
@@ -235,8 +235,8 @@ body {
     transition: .2s ease-in-out;
 }
 .top-bar {
-    position: fixed;
-    width: 95.5%;
+    /* position: fixed; */
+    width: 100%;
     font-size: 0.8rem;
     text-align: right;
     padding: 4px 7px 4px 0;

@@ -13,7 +13,7 @@ class Core {
     //SESSION CONTROL
     public function __construct() { }
 
-    private static function __sesVerify() {
+    public static function __sesVerify() {
         if(isset($_SESSION['uid']) && isset($_SESSION['user']) && isset($_SESSION['pass'])) {
             return true;
         } else {
@@ -21,7 +21,13 @@ class Core {
         }
     }
 
-    private static function __getUsrInfo($param) {
+    public static function __pgVerify() {
+        if(isset($_SESSION['uid']) && isset($_SESSION['user']) && isset($_SESSION['pass'])) {
+            echo "<script>window.location.assign('index.php');</script>";
+            die();
+        } 
+    }
+    public static function __getUsrInfo($param) {
         $conn   = new Conn;
         $link   = $conn->__init();
         $sql    = sprintf(
@@ -52,7 +58,7 @@ class Core {
         $conn = new Conn;
         $link = $conn->__init();
         $sqls = sprintf(
-            "SELECT ID_USER, USERNAME, PASSWORD
+            "SELECT ID_USER, USERNAME, PASSWORD, ACTIVE, DELETED
              FROM t_user
              WHERE USERNAME = '%s'
              AND PASSWORD = '%s'"
@@ -63,27 +69,45 @@ class Core {
             $count = $sqls->num_rows;
             $data  = $sqls->fetch_assoc();
             if($count == 1) {
-                $sqli = sprintf(
-                    "UPDATE t_user SET 
-                     LAST_LOGIN = NOW()
-                     WHERE USERNAME = '%s'
-                     AND PASSWORD = '%s'"
-                    , $data['USERNAME']
-                    , $data['PASSWORD']               
-                );
-                if($sqli = $link->query($sqli)) {
-                    $_SESSION['uid']  = $data['ID_USER'];
-                    $_SESSION['user'] = $data['USERNAME'];
-                    $_SESSION['pass'] = $data['PASSWORD'];
-                    return "1";
+                if($data['DELETED'] != 0) {
+                    $str = "You are no longer listed as Admin.
+                            <br>
+                            <small>
+                                <i>*Contact Supervisor for further information.</i>
+                            </small>";
+                    return $str;
+                    exit;
+                } else if($data['ACTIVE'] != 0) {
+                    $str = "Your account has been deactivated.
+                            <br>
+                            <small>
+                                <i>*Contact Supervisor for further information.</i>
+                            </small>";
+                    return $str;
+                    exit;
                 } else {
-                    return "SQL[2]ERRNO - Cannot Login.";
+                    $sqli = sprintf(
+                        "UPDATE t_user SET 
+                         LAST_LOGIN = NOW()
+                         WHERE USERNAME = '%s'
+                         AND PASSWORD = '%s'"
+                        , $data['USERNAME']
+                        , $data['PASSWORD']               
+                    );
+                    if($sqli = $link->query($sqli)) {
+                        $_SESSION['uid']  = $data['ID_USER'];
+                        $_SESSION['user'] = $data['USERNAME'];
+                        $_SESSION['pass'] = $data['PASSWORD'];
+                        return "1";
+                    } else {
+                        return "SQL[2]ERR - Server Failed.";
+                    }
                 }
             } else {
                 return "Invalid Username or Password.";
             }
         } else {
-            return "SQL[1]ERRNO - Cannot Login.";
+            return "SQL[1]ERR - Server Failed.";
         }
         $link->close();
     }
@@ -108,7 +132,7 @@ class Core {
                 "SELECT ID_MENU, TITLE, STR_ID, ICON, PATH
                  FROM t_menu
                  WHERE PERMIT <= '%d'
-                 AND ID_SUPER <= '0'"
+                 AND ID_SUPER <= '1'"
                 , $permit
         );        
         if($sql = $link->query($sql)) {
@@ -120,26 +144,68 @@ class Core {
         } else {
             return "0";
         }
+        $link->close();
     }
 
     public function __loadSub($parent) {
         $conn = new Conn;
         $link = $conn->__init();
-        $sql = sprintf(
+        $sql  = sprintf(
             "SELECT ID_MENU, ID_SUPER, TITLE, STR_ID, PATH
              FROM t_menu
              WHERE ID_SUPER = %d"
             , $parent
         );
         if($sql = $link->query($sql)) {
-            while($arr = $sql->fetch_assoc()) {
-                $data[] = $arr;
+            if($sql->num_rows > 0) {
+                while($arr = $sql->fetch_assoc()) {
+                    $data[] = $arr;
+                }
+                return json_encode($data);
+                die();
+            } else {
+                return "0";
             }
-            return json_encode($data);
-            die();
         } else {
             return "0";
         }
+        $link->close();
+    }
+
+    public function __loadPage($pgid) {
+        $conn = new Conn;
+        $link = $conn->__init();
+        $sql  = sprintf(
+            "SELECT PAR.TITLE   AS PAR_TITLE,
+                    SUB.TITLE   AS SUB_TITLE,
+                    SUB.STR_ID  AS SUB_STRID,
+                    SUB.PATH    AS PG_PATH
+             FROM t_menu AS PAR
+             JOIN t_menu AS SUB 
+                ON PAR.ID_MENU = SUB.ID_SUPER
+             WHERE SUB.ID_MENU = '%d'"
+            , $pgid
+        );
+        if($sql = $link->query($sql)) {
+            if($sql->num_rows == 1) {
+                $data = $sql->fetch_assoc();
+                return json_encode($data);
+                die();
+            } else {
+                return "0";
+            }
+        } else {
+            return "0";
+        }
+        $link->close();
+    }
+
+    public function __getUsrProfile() {
+        $conn = new Conn;
+        $link = $conn->__init();
+        $sql  = sprintf(
+            "SELECT "
+        );
     }
 }
 ?>

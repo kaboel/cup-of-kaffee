@@ -1,3 +1,8 @@
+<?php
+require_once('../lib/core.php');
+$core = new Core;
+$core::__pgVerify();
+?>
 <div class="admin-menu wrap">
     <div class="menu-panel-menu main-menu">
         <div class="logo">
@@ -17,19 +22,19 @@
         </ul>
     </div>
 </div>
-<div id="admPgs" onclick="dismissSub()" class="admin-content wrap">
-<div class="top-bar">
-    <span onclick="" class="applet" title="Settings">
-        <i class="fas fa-user-cog"></i><b> Kaboel</b>
-    </span>
-    <span onclick="logoutExec()" class="applet" title="Logout">
-        <i class="fas fa-power-off"></i>
-    </span>
-</div>
-    <!-- REMOTE -->
+<div onclick="dismissSub()" class="admin-content wrap">
+    <div id="admPnl" class="top-bar">
+        <span onclick="" class="applet" title="Settings">
+            <i class="fas fa-user-cog"></i><b> </b>
+        </span>
+        <span onclick="logoutExec()" class="applet" title="Logout">
+            <i class="fas fa-power-off"></i>
+        </span>
+    </div>
+    <div id="admPgs" style="display:none;">
+        <!-- REMOTE -->
+    </div>
 </div>
 <script>
-$(function(_e) {
-    __loadMenu();
-});
+        tes()
 </script>

@@ -8,11 +8,29 @@
 
 // ADMIN INDEX REMOTE
 function loadAdm(target) {
-    target = target+".php";
     $("#admIdx").load(target);
+
+    return false;
 }
 
 // ADMIN PAGES REMOTE
+function tes() {
+    var exec = "sessionVerify";
+
+    $.ajax({
+        type: 'GET',
+        data: 'exec='+exec,
+        url : '../lib/handler',
+        success : function(_e) {
+            if(_e != 1) {
+                alert("cok");
+            }
+        }
+    });
+
+    return false;
+}
+
 function __loadMenu() {
     var exec = "loadMenu";
     var cont = $("#mainMenu");
@@ -21,45 +39,84 @@ function __loadMenu() {
         type: 'GET',
         data: 'exec='+exec,
         url:  '../lib/handler',
-        success: function(_e) {
+        success : function(_e) {
             var obj = JSON.parse(_e);
             var list = "";
             $.each(obj, function(_key, _val) {
-                list += "<li id='"+ _val['STR_ID'] +"' onclick='__loadSubMenu("+_val['ID_MENU']+")'  title='"+ _val['TITLE'] +"'>"
-                     +      "<i class='"+ _val['ICON'] +"'></i>"
-                     +  "</li>" 
+                var strid = _val['STR_ID'];
+                var title = _val['TITLE'];
+                var icon  = _val['ICON'];
+                var trig  = "__loadSubMenu("+ _val['ID_MENU'] +")";
+                if(_val['ID_MENU'] <= 1) {
+                    trig  = "__loadPage("+ _val['ID_MENU'] +")";
+                }
+                list += "<li id='"+ strid +"' onclick='"+ trig +"'  title='"+ title +"'>"
+                     +      "<i class='"+ icon +"'></i>"
+                     +  "</li>"; 
             });
             cont.empty().append(list);
         }
     });
+
+    return false;
 }
 function __loadSubMenu(parent) {
     var exec = "loadSub";
     var cont = $("#subMenu");
-    cont.empty();
-    if(parent > 1) {
-        $.ajax({
-            type : 'GET',
-            data : 'exec='+exec+'&parent='+parent,
-            url  : '../lib/handler',
-            success : function(_e) {
+
+    $.ajax({
+        type : 'GET',
+        data : 'exec='+exec+'&parent='+parent,
+        url  : '../lib/handler',
+        success : function(_e) {
+            if(_e != "0") {
                 var obj = JSON.parse(_e);
                 var list = "";
                 $.each(obj, function(_key, _val) {
-                    list += "<li>"+ _val['TITLE'] +"</li>";
+                    var strid = _val['STR_ID'];
+                    var title = _val['TITLE'];
+                    var trig  = "__loadPage("+ _val['ID_MENU'] +")";
+                    list += "<li id='"+ strid +"' onclick='"+ trig +"'  title='"+ title +"'>"
+                         +      title
+                         +  "</li>";
                 });
                 cont.empty().append(list);
                 openSub();
+            } else { dismissSub(); }
+        }
+    });
+
+    return false;
+}
+function __loadPage(pgid) {
+    dismissSub();
+    var exec = "loadPage";
+    var cont = $("#admPgs");
+    cont.fadeOut('300');
+    
+    $.ajax({
+        type: 'GET',
+        data: 'exec='+exec+'&pgid='+pgid,
+        url : '../lib/handler',
+        success : function(_e){
+            if(_e != "0") {
+                var obj   = JSON.parse(_e);
+                var path  = obj['PG_PATH'];
+                var partl = obj['PAR_TITLE'];
+                var subtl = obj['SUB_TITLE'];
+                var subid = obj['SUB_STRID'];
+                setTimeout( function() {
+                    cont.load(path+"/", function() {
+                        $( this ).fadeIn('300');
+                    });
+                }, 300);
             }
-        });
-    } else {
-        dismissSub();
-    }
+        }
+    });
+
+    return false;
 }
-function __loadPage(param) {
-    var target  = param+".php";
-    $("#admPgs").load(target);    
-}
+
 
 
 // ADMIN EXECS
@@ -73,10 +130,10 @@ function loginExec() {
     
     if(verFrm("login")) {
         $.ajax({
-            type:   'POST',
+            type:   'GET',
             data:   'exec='+exec+'&user='+user+'&pass='+pass,
             url:    '../lib/handler',
-            success: function(_e) {
+            success : function(_e) {
                 clrFrm("login");
                 if(_e == "1") {
                     location.reload();
@@ -98,6 +155,8 @@ function loginExec() {
             "Please fill all the blanks."
         );
     }
+
+    return false;
 }
 
 // Logout
@@ -120,10 +179,10 @@ function logoutExec() {
                 text: "Yes, Log Me Out",
                 click: function(_e) {
                     $.ajax({
-                        type:   "POST",
-                        data:   "exec="+exec,
-                        url:    '../lib/handler',
-                        success: function(_e){
+                        type:   'GET',
+                        data:   'exec='+exec,
+                        url :    '../lib/handler',
+                        success : function(_e){
                             if(_e == "1") {
                                 location.reload(true);
                             } else {
@@ -143,28 +202,41 @@ function logoutExec() {
         ],
         position: { my: "center", at: "top+25%" }
     });
+
+    return false;
 }
+
+// INDIVIDUAL PAGES REMOTES AND EXECS
+
+
 
 // OTHER(S)
 function dismissSub() {
     if($("#subContainer").hasClass( "menu-collapse" )) {
         $("#subContainer").removeClass( "menu-collapse" );
     }
+
+    return false;
 }
 function openSub() {
     if(!$("#subContainer").hasClass( "menu-collapse" )) {
         $("#subContainer").addClass( "menu-collapse" );
     }
+
+    return false;
 }
 
 // $(function(_e) {
 //     $( document ).tooltip({    
-//         position: { my: "left+10 center", at: "right center" },
+//         position: { my: "left center", at: "right center" },
 //         show: { effect: "fadeIn", duration: 200 },
-//         hide: { effect: "fadeOut", duration: 200 }
-//         // open: function(event, ui) {
-//         //     ui.tooltip.delay(5000).fadeTo(2000, 0);
-//         // }
+//         hide: { effect: "fadeOut", duration: 200 },
+//         open: function (event, ui) {
+//             var $elem = $(event.target);
+//             this.click(function () {
+//                 $elem.tooltip('close');
+//             });
+//         },
 //     });
 // });
 
@@ -180,6 +252,8 @@ function verFrm(type) {
             }
         break;
     }
+
+    return false;
 }
 
 function clrFrm(type) {
@@ -189,6 +263,8 @@ function clrFrm(type) {
             $("input[type='password']").val("");
         break;
     }
+
+    return false;
 }
 
 function msgOut(target, type, info, msg) {
@@ -219,4 +295,6 @@ function msgOut(target, type, info, msg) {
                 +"  </button>"
                 +"</div>";
     box.empty().append(obj).show();
+
+    return false;
 }
