@@ -1,8 +1,13 @@
+/* 
+    * cupofkaffee v.1 (https://github.com/kaboel/cupofkaffee)
+    * Copyright 2018 faiq.kaboel@gmail.com | In Effect
+*/
+
 * {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
 }
-h1, h2, p {
+h1, h2, p, span {
     cursor: default;
 }
 body {
@@ -59,7 +64,7 @@ body {
     letter-spacing: 2.5px;
     margin-top: 0;
 }
-.notfound p {
+.notfound p, span {
     font-family: 'Raleway', sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -71,12 +76,11 @@ body {
     font-family: 'Raleway', sans-serif;
     font-size: 0.75rem;
     text-decoration: none;
-    text-transform: uppercase;
-    background: #fff;
+    background: #331400;
     display: inline-block;
-    padding: 10px 20px;
+    padding: 7px 20px;
     border-radius: 3px;
-    color: #292929;
+    color: #fff;
     font-weight: bold;
     -webkit-box-shadow: 0px 4px 15px -5px rgba(0, 0, 0, 0.3);
             box-shadow: 0px 4px 15px -5px rgba(0, 0, 0, 0.3);
@@ -84,8 +88,8 @@ body {
     transition: 0.1s all ease-in-out;
 }
 .notfound a:hover {
-    color: #fff;
-    background-color: #331400;
+    color: #DDD;
+    background-color: #7E4000;
 }
 @media only screen and (max-width: 480px) {
     .notfound {

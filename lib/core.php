@@ -3,6 +3,7 @@
 //  * cupofkaffee v.1 (https://github.com/kaboel/cupofkaffee)
 //  * Copyright 2018 faiq.kaboel@gmail.com | In Effect
 //
+
 session_start([
     'cookie_lifetime' => 10800,
 ]);
@@ -36,7 +37,7 @@ class Core {
         $uri = "http://127.0.0.1:8080/cupofkaffee/forbid";
         if(!self::__httpVerify()) {
             header('header("HTTP/1.1 403 Forbidden', true, 403);
-            header('Location: ../errors/oops?');
+            header('Location: /cupofkaffee/errors/oops?');
         }
 
         // if(self::__accVerify()) {
