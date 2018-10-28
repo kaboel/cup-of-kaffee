@@ -2,7 +2,6 @@
     * cupofkaffee v.1 (https://github.com/kaboel/cupofkaffee)
     * Copyright 2018 faiq.kaboel@gmail.com | In Effect
 */
-
 @font-face {
     font-family: 'oxygenregular';
     src: url('../webfonts/oxygen-regular-webfont.woff2') format('woff2'),
@@ -25,16 +24,23 @@ a {
 }
 body {
     background-color: #FFF4E6;
+    background-attachment: fixed;
 }
 .main-head {
+    width: 100%;
     background-color: #FFF4E6;
-    margin-bottom: 20px;
-    color: #875625;
     -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
        -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
             box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
 }
+.overlayed {
+    border-radius: 0;
+    padding-top: 10%;
+    color: #FFF4E6 !important;
+    background: rgba(0,0,0,0.70) !important;
+}
 .main-foot {
+    background-color:#FFF4E6; 
     padding: 40px;
     text-align: center;
     color: #875625;
@@ -54,9 +60,6 @@ body {
 .hyper-img {
     cursor: pointer;
 }
-.hyper-nav {
-    border: 2px solid transparent;
-}
 .hyper-nav span {
     cursor: pointer !important;
 }
@@ -67,10 +70,16 @@ body {
     font-size: 13px;
     margin-left: 2px;
 }
-.main-head .hyper-nav:hover,
+.main-head .hyper-nav:hover {
+    color:#FFF4E6;
+    transition: all .2s ease-in-out;
+    text-shadow:1px 1px 10px #DDD, 1px 1px 10px #ccc;
+}
 .main-foot .hyper-nav:hover {
     text-shadow: none;
-    color: #331400;
+    color : #331400;
+    transform: rotate(360deg);
+    transition: all .3s ease-in-out;
 }
 .hyper-text {
     cursor: pointer;

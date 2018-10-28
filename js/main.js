@@ -6,6 +6,7 @@
 // MAIN REMOTE 
 
 
+
 // ADMIN INDEX REMOTE
 function loadAdm(target) {
     $("#admIdx").load(target);

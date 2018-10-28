@@ -14,24 +14,21 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/all.css">
 <link rel="stylesheet" href="css/style.css">
+<style>
+body {
+    background-image: url("images/pattern.jpg");
+    background-repeat: repeat;
+} 
+</style>
 <body>
     <div class="main-head">
         <div class="container">
-            <ul class="nav justify-content-end">
-                <li class="nav-item">
-                    <span class="nav-link">
-                        <i class="fas fa-info"></i>
-                        <span id="info">Yes ! We're open.</span>
-                    </span>
-                </li>
-                <li class="nav-item hyper-nav">
-                    <span class="nav-link">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span id="bill">0</span>
-                    </span>
-                </li>
-            </ul>
+            
         </div>
+    </div>
+    <div class="jumbotron overlayed">
+        <h1>.cupofkaffee.</h1>
+        <p>Best Coffee Shop In Da World !</p>
     </div>
     <div class="container">
         <div class="side wrap">

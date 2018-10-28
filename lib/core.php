@@ -84,6 +84,7 @@ class Core {
         }
     }  
 
+    // AJAX CALLBACKS
     public function __loginExec($user, $pass) {
         $conn = new Conn;
         $link = $conn->__init();

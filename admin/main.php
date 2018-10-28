@@ -33,6 +33,7 @@
 <script>
 $(function(_e){
     __loadMenu();
+    __loadPage(1);
 })
 </script>
 
