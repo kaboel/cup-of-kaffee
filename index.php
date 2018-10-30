@@ -23,49 +23,68 @@ body {
 <body>
     <div class="main-head">
         <div class="container">
-            
+            <div class="row">
+                <div class="col">
+                    <img src="images/kaffee-icon.png" width="100" alt="">
+                </div>
+                <div class="col text-right">
+                    Hello
+                </div>
+            </div>
         </div>
+    </div>
+    <div class="navigation">
+        
     </div>
     <div class="jumbotron overlayed">
         <h1>.cupofkaffee.</h1>
         <p>Best Coffee Shop In Da World !</p>
     </div>
-    <div class="container">
-        <div class="side wrap">
-
-        </div>
-        <div class="content wrap">
-            <!-- REMOTE -->
-        </div>
-    </div>
     <div class="main-foot">
-        <ul class="nav justify-content-center">
-            <li class="nav-item hyper-nav">
-                <span class="nav-link">
-                    <i class="fab fa-facebook-f"></i>
-                </span>
-            </li>
-            <li class="nav-item hyper-nav">
-                <span class="nav-link">
-                    <i class="fab fa-instagram"></i>
-                </span>
-            </li>
-            <li class="nav-item hyper-nav">
-                <span class="nav-link">
-                    <i class="fab fa-twitter"></i>
-                </span>
-            </li>
-            <li class="nav-item hyper-nav">
-                <span class="nav-link">
-                    <i class="fab fa-google-plus-g"></i>
-                </span>
-            </li>
-        </ul>
-        <span class="copyright"><i class="far fa-copyright"></i> 2018 <a href="#">.cupofkaffee.</a> | All Rights Reserved.</span>
+        <div class="row">
+            <div class="col text-left" style="line-height: 90px;">
+                <span class="copyright"><i class="far fa-copyright"></i> 2018 <a href="#">.cupofkaffee.</a> | All Rights Reserved.</span>
+            </div>
+            <div class="col" style="padding-top: 20px;">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item hyper-nav">
+                        <span class="nav-link">
+                            <i class="fas fa-chevron-circle-up"></i>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col" style="padding-top: 20px;">
+                <ul class="nav justify-content-end">
+                    <li class="nav-item hyper-nav">
+                        <span class="nav-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </span>
+                    </li>
+                    <li class="nav-item hyper-nav">
+                        <span class="nav-link">
+                            <i class="fab fa-instagram"></i>
+                        </span>
+                    </li>
+                    <li class="nav-item hyper-nav">
+                        <span class="nav-link">
+                            <i class="fab fa-twitter"></i>
+                        </span>
+                    </li>
+                    <li class="nav-item hyper-nav">
+                        <span class="nav-link">
+                            <i class="fab fa-google-plus-g"></i>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
 <script src="js/jquery-min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
-<script src="js/popper.min.js"></script>
+<script type="text/javascript">
+
+</script>
 </html>
