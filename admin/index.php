@@ -32,5 +32,4 @@ error_reporting(E_ALL ^ E_NOTICE);
 include('../lib/core.php');
 $core = new Core;
 $core->__loginVerify();
-
 ?>

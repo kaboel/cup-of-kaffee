@@ -127,13 +127,16 @@ body {
 }
 .main-menu .logo {
     cursor: pointer;
-    margin: 7px;
-    padding: 7px;
+    /* margin: 7px; */
+    padding: 8px;
     border-radius: 3px;
-    background-color: #D5C1AA;
+    background-color: #DF8527;
     -webkit-box-shadow: inset 0px 0px 2px 0px rgba(51,20,0,1);
     -moz-box-shadow: inset 0px 0px 2px 0px rgba(51,20,0,1);
     box-shadow: inset 0px 0px 2px 0px rgba(51,20,0,1);
+}.main-menu .logo img {
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.75);
 }
 .sub-menu {
     z-index: -1;
@@ -145,17 +148,18 @@ body {
     transition-delay: .1s;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    background-color: rgba(51, 20, 0, 0.95);
-    -webkit-box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.75);
+    background-color: #230d00;
+    /* background-color: rgba(51, 20, 0, 0.95); */
+    /* -webkit-box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.75);
        -moz-box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.75);
-            box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.75);
+            box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.75); */
 }
 .sub-menu .logo {
     text-align: center;
-    background-color: #331400;
+    background-color: #ba6e23;;
     border-top-right-radius: 5px;
-    padding: 4.2% 0 4.2% 0;
-    color: #EEE;
+    padding: 4.5% 0 4.5% 0;
+    color: #230d00;
 }
 .sub-menu .logo span {
     font-weight: bold;
@@ -183,11 +187,11 @@ body {
     border-bottom: 1px solid transparent;
     padding: 20%;
     font-size: 0.80rem;
-    color: #DDD;
+    color: #7c6557;
     text-align: center;
 }
 .p-menu li:hover,
-.p-menu li .active { 
+.p-menu li.active { 
         color:#FFF4E6;
         text-shadow:1px 1px 10px #DDD, 1px 1px 10px #ccc;
 }
@@ -224,7 +228,7 @@ body {
 .s-menu li:hover {
     background-color: #683520;
     border-color: #683520;
-    color: #EEE;
+    color: #FFF;
 }
 .p-menu li:hover,
 .s-menu li:hover {

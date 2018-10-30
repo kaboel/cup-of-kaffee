@@ -9,7 +9,7 @@
 
 // ADMIN INDEX REMOTE
 function loadAdm(target) {
-    $("#admIdx").load(target);
+    $("#admIdx").empty().load(target);
 
     return false;
 }
@@ -195,6 +195,14 @@ function logoutExec() {
 
 
 // OTHER(S)
+function active(param) {
+    if($("#"+param).hasClass( "active" )) {
+        $("#"+param).removeClass( "active" );
+    } else {
+        $("#"+param).addClass( "active" );
+    }
+}
+
 function dismissSub() {
     if($("#subContainer").hasClass( "menu-collapse" )) {
         $("#subContainer").removeClass( "menu-collapse" );

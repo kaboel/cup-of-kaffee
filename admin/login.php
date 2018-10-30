@@ -1,3 +1,10 @@
+<?php
+error_reporting(E_ALL ^ E_NOTICE);
+require_once('../lib/core.php');
+$core = new Core;
+$core::__locVerify();
+?>
+
 <div class="container">
     <div class="row" style="margin-top:2.5%;">
         <div class="col"></div>
@@ -49,11 +56,3 @@ $(function(_e) {
     });
 });
 </script>
-
-<?php
-error_reporting(E_ALL ^ E_NOTICE);
-require_once('../lib/core.php');
-$core = new Core;
-$core::__locVerify();
-
-?>

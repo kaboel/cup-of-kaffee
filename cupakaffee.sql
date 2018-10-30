@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 25, 2018 at 12:16 AM
+-- Generation Time: Oct 30, 2018 at 11:48 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -73,7 +73,8 @@ CREATE TABLE `m_employee` (
 --
 
 INSERT INTO `m_employee` (`ID_EMPLOYEE`, `FIRST_NAME`, `LAST_NAME`, `BIRTH_DATE`, `BIRTH_PLACE`, `GENDER`, `ADDRESS`, `PHONE`, `POSITION`) VALUES
-(1, 'Faiq', 'Allam', '1999-09-07', 'Malang', 0, 'Jl. Batubara ', '081515291890', 3);
+(1, 'Faiq', 'Allam', '1999-09-07', 'Malang', 0, 'Jl. Batubara ', '081515291890', 3),
+(2, 'Hesti', 'Febriyani', '1999-02-14', 'Malang', 1, 'Jl.Bandulan', '081222333222', 1);
 
 -- --------------------------------------------------------
 
@@ -134,10 +135,10 @@ CREATE TABLE `t_menu` (
 --
 
 INSERT INTO `t_menu` (`ID_MENU`, `ID_SUPER`, `TITLE`, `STR_ID`, `ICON`, `PATH`, `PERMIT`) VALUES
-(0, 0, 'Dashboard', 'dashBoard', 'fas fa-tachometer-alt', 'pg_dshbrd', 0),
-(2, 0, 'Main Control', 'mainControl', 'fas fa-cogs', 'pg_control', 0),
-(3, 0, 'Master Data', 'masterData', 'fa fa-database', 'pg_master', 1),
-(4, 2, 'Company Profile', 'cpControl', '', 'index', 0);
+(1, 1, 'Dashboard', 'dashBoard', 'fas fa-tachometer-alt', 'pg_dshbrd', 0),
+(2, 0, 'Main Control', 'mainControl', 'fas fa-cogs', '', 0),
+(3, 0, 'Master Data', 'masterData', 'fa fa-database', '', 1),
+(4, 2, 'Company Profile', 'cpControl', '', 'pg_cpctrl', 0);
 
 -- --------------------------------------------------------
 
@@ -153,15 +154,18 @@ CREATE TABLE `t_user` (
   `CREATED` date DEFAULT NULL,
   `LAST_LOGIN` datetime DEFAULT NULL,
   `PERMIT` int(1) NOT NULL DEFAULT '0',
-  `DELETE` int(1) NOT NULL DEFAULT '0'
+  `ACTIVE` int(1) NOT NULL DEFAULT '0',
+  `DELETED` int(1) NOT NULL DEFAULT '0',
+  `PICTURE` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `t_user`
 --
 
-INSERT INTO `t_user` (`ID_USER`, `ID_EMPLOYEE`, `USERNAME`, `PASSWORD`, `CREATED`, `LAST_LOGIN`, `PERMIT`, `DELETE`) VALUES
-(1, 1, 'kaboel', 'df85f55abd44e5343a7d4a71154521a2', NULL, '2018-10-25 05:05:49', 1, 0);
+INSERT INTO `t_user` (`ID_USER`, `ID_EMPLOYEE`, `USERNAME`, `PASSWORD`, `CREATED`, `LAST_LOGIN`, `PERMIT`, `ACTIVE`, `DELETED`, `PICTURE`) VALUES
+(1, 1, 'kaboel', 'df85f55abd44e5343a7d4a71154521a2', NULL, '2018-10-31 05:06:17', 1, 0, 0, '/images/user/author.jpg'),
+(2, 2, 'hesti', '070550d8ed8790c0ef4848c86404e1b1', NULL, '2018-10-31 05:16:08', 0, 0, 1, '/images/user/546789.jpg');
 
 --
 -- Indexes for dumped tables
@@ -237,7 +241,7 @@ ALTER TABLE `dt_delivery`
 -- AUTO_INCREMENT for table `m_employee`
 --
 ALTER TABLE `m_employee`
-  MODIFY `ID_EMPLOYEE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_EMPLOYEE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `m_price`
@@ -261,7 +265,7 @@ ALTER TABLE `t_menu`
 -- AUTO_INCREMENT for table `t_user`
 --
 ALTER TABLE `t_user`
-  MODIFY `ID_USER` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_USER` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
