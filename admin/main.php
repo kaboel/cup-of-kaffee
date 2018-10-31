@@ -27,12 +27,19 @@ $pp = "..". $core::__getUsrInfo("PICTURE");
 </div>
 <div onclick="dismissSub()" class="admin-content wrap">
     <div id="admPnl" class="top-bar">
-        <span onclick="" class="applet" title="Settings">
-            <i class="fas fa-user-cog"></i><b> <?= $_SESSION['user'] ?></b>
-        </span>
-        <span onclick="logoutExec()" class="applet" title="Logout">
-            <i class="fas fa-power-off"></i>
-        </span>
+        <div class="row">
+            <div id="pgTitle" class="col">
+                <span><i class="fas fa-chevron-right"></i> <b>Dashboard</b></span>
+            </div>
+            <div class="col text-right">
+                <span onclick="__loadPage(5)" class="applet" title="Settings">
+                <i class="fas fa-user-cog"></i><b> <?= $_SESSION['user'] ?></b>
+                </span>
+                <span onclick="logoutExec()" class="applet" title="Logout">
+                <i class="fas fa-power-off"></i>
+                </span>
+            </div>
+        </div>
     </div>
     <div id="admPgs" style="display:none;">
         <!-- REMOTE -->

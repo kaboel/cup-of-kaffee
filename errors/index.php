@@ -13,17 +13,17 @@ if(isset($_GET['errno'])) {
 		case 403 :
 			$errno = "403";
 			$error = "Access Forbidden";
-			$ermsg = "You don't have permission to access the requested directory.";
+			$ermsg = "Sorry, The page or resource you were trying to access is absolutely forbidden for some reason.";
 		break;
 		case 404 :
 			$errno = "404";
 			$error = "Page Not Found";
-			$ermsg = "The page you are looking for might have been removed had its name changed or is temporarily unavailable.";
+			$ermsg = "Sorry, The page you are looking for might have been removed or had its name changed or is temporarily unavailable.";
 		break;
 		case 500 :
 			$errno = "500";
 			$error = "Internal Server Error";
-			$ermsg = "The server encountered an internal error or misconfiguration and was unable to complete your request.";
+			$ermsg = "Sorry, The server encountered an internal error or misconfiguration and was unable to complete your request.";
 		break;
 	}
 }

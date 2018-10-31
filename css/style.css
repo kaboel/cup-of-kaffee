@@ -110,7 +110,7 @@ body {
 }
 .admin-menu {
     z-index: 1;
-    position: relative;
+    position: fixed;
     width: 4.5%;
 }
 .menu-panel-menu {
@@ -172,8 +172,9 @@ body {
     margin-left: -10px !important;
 }
 .admin-content {
+    position: fixed;
     width: 95.5%;
-    margin-left: -4px;
+    margin-left: 4.5%;
 }
 .p-menu, .s-menu {
     padding: 0;
@@ -235,14 +236,13 @@ body {
     transition: .2s ease-in-out;
 }
 .top-bar {
-    /* position: fixed; */
+    color: #EDDDCB;
     width: 100%;
     font-size: 0.8rem;
-    text-align: right;
     padding: 4px 7px 4px 0;
-    background-color: #331400;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 4px;
+    background-color: #DF8527;
+    /* border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 4px; */
     -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
        -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
             box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
@@ -256,7 +256,6 @@ body {
     transition: all .2s ease-in-out;
     background: transparent;
     outline: none;
-    color: #DDD;
 }
 .applet:hover {
     color:#FFF4E6;
@@ -265,7 +264,11 @@ body {
 .applet b {
     font-size: 0.7rem !important;
 }
-
+#pgTitle {
+    font-size: 1.5rem;
+    padding: 6px 0 6px 2.5%;
+    font-weight: bolder;
+}
 
 /* OVERRIDE */
 .ui-dialog-titlebar-close {
@@ -273,6 +276,13 @@ body {
 }
 
 
-@media screen and (max-width: 600px) {
-  
+@media screen and (max-width: 1080px) {
+    #pgTitle {
+        font-size: 130%;
+        padding: 0.6% 0 0.6% 2.5%;
+        font-weight: bolder;
+    }
+    .sub-menu .logo {
+        padding: 2% 0 2% 0;
+    }
 }
