@@ -152,7 +152,7 @@ function logoutExec() {
         draggable: false,
         title : ".barista.",
         open: function() {
-            $('.ui-widget-overlay').click(function(){
+            $('.ui-front').click(function(){
                 $( this ).dialog( "close" );
             })
         },
@@ -182,9 +182,8 @@ function logoutExec() {
                 }
             }
         ],
-        position: { my: "center", at: "top+25%" }
+        position: { my: "center", at: "top+250" }
     });
-
     return false;
 }
 
