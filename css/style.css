@@ -226,6 +226,7 @@ body {
 }
 
 .s-menu {
+    margin-top: 1px;
     margin-bottom: 0;
 }
 .s-menu li {

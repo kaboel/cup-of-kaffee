@@ -8,24 +8,32 @@ if(isset($_GET['errno'])) {
 	$errno = $_GET['errno'];
 	$error = "";
 	$ermsg = "";
-	$homep = "http://".$_SERVER['HTTP_HOST']."/cupofkaffee/";
 	switch($errno) {
-		case 403 :
-			$errno = "403";
-			$error = "Access Forbidden";
-			$ermsg = "Sorry, The page or resource you were trying to access is absolutely forbidden for some reason.";
+		case 403	:
+			$errno	= "403";
+			$error	= "Access Forbidden";
+			$ermsg	= "Sorry, The page or resource you were trying to access is absolutely forbidden for some reason.";
 		break;
-		case 404 :
-			$errno = "404";
-			$error = "Page Not Found";
-			$ermsg = "Sorry, The page you are looking for might have been removed or had its name changed or is temporarily unavailable.";
+		case 404	:
+			$errno	= "404";
+			$error	= "Page Not Found";
+			$ermsg	= "Sorry, The page you are looking for might have been removed or had its name changed or is temporarily unavailable.";
 		break;
-		case 500 :
-			$errno = "500";
-			$error = "Internal Server Error";
-			$ermsg = "Sorry, The server encountered an internal error or misconfiguration and was unable to complete your request.";
+		case 500	:
+			$errno	= "500";
+			$error	= "Internal Server Error";
+			$ermsg	= "Sorry, The server encountered an internal error or misconfiguration and was unable to complete your request.";
+		break;
+		default		:
+			$errno	= "404";
+			$error	= "Page Not Found";
+			$ermsg	= "Sorry, The page you are looking for might have been removed or had its name changed or is temporarily unavailable.";
 		break;
 	}
+} else {
+	$errno	= "404";
+	$error	= "Page Not Found";
+	$ermsg	= "Sorry, The page you are looking for might have been removed or had its name changed or is temporarily unavailable.";
 }
 ?>
 <html>
@@ -41,11 +49,10 @@ if(isset($_GET['errno'])) {
 <body>
 	<div id="notfound">
 		<div class="notfound">
-			<span><?= $homep ?></span>
 			<div class="notfound-404">
-				<h1>:(</h1>
+				<img src="/cupofkaffee/errors/images/kaffee-sad.png" width="180" height="180">
 			</div>
-			<h2><?= $errno. " - ". $error ?></h2>
+			<h1><?= $errno ?><br><small><?= $error ?></small></h1>
 			<p><?= $ermsg ?></p>
 			<a href="#" onclick="back()">Back To Previous</a>
 			<a href="<?= $homep ?>">Home Page</a>
