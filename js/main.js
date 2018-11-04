@@ -90,7 +90,7 @@ function __loadPage(pgid) {
                 var subtl = obj['SUB_TITLE'];
                 var subid = obj['SUB_STRID'];
                 setTimeout( function() {
-                    cont.load(path+"/", function() {
+                    cont.empty().load(path+"/", function() {
                         $( this ).fadeIn('300');
                     });
                 }, 300);

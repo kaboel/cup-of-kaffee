@@ -61,6 +61,7 @@ body {
     font-weight: bolder;
 }
 .hyper-nav {
+    cursor: pointer;
     transition: all .3s ease-in-out;
 }
 .hyper-nav span {
@@ -88,6 +89,12 @@ body {
     display: inline-block;
     vertical-align: middle;
 }
+.btn-sm {
+    font-size: 0.75rem;
+}
+.btn-fixed {
+    width: 5rem;
+}
 .btn-kaffee,
 .btn-kaffee:focus {
     outline: none !important;
@@ -114,10 +121,12 @@ body {
     width: 4.5%;
 }
 .menu-panel-menu {
+    width: auto;
     display: inline-block;
 }
 .main-menu {
     width: 100%;
+    min-width: 55px;
     height: 100%;
     background-color: #331400;
     -webkit-box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.75);
@@ -126,6 +135,8 @@ body {
     
 }
 .main-menu .logo {
+    width: 56px;
+    height: 55px;
     cursor: pointer;
     /* margin: 7px; */
     padding: 8px;
@@ -135,6 +146,7 @@ body {
     -moz-box-shadow: inset 0px 0px 2px 0px rgba(51,20,0,1);
     box-shadow: inset 0px 0px 2px 0px rgba(51,20,0,1);
 }.main-menu .logo img {
+    background-color: #DDD;
     border-radius: 50%;
     box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.75);
 }
@@ -155,6 +167,7 @@ body {
             box-shadow: 1px 0px 2px 0px rgba(0,0,0,0.75); */
 }
 .sub-menu .logo {
+    height: 55px;
     text-align: center;
     background-color: #ba6e23;;
     border-top-right-radius: 5px;
@@ -172,7 +185,6 @@ body {
     margin-left: -10px !important;
 }
 .admin-content {
-    position: fixed;
     width: 95.5%;
     margin-left: 4.5%;
 }
@@ -236,6 +248,8 @@ body {
     transition: .2s ease-in-out;
 }
 .top-bar {
+    height: 55px;
+    position: fixed;
     color: #EDDDCB;
     width: 100%;
     font-size: 0.8rem;
@@ -264,11 +278,113 @@ body {
 .applet b {
     font-size: 0.7rem !important;
 }
-#pgTitle {
-    font-size: 1.5rem;
-    padding: 6px 0 6px 2.5%;
+/* #admPnl {
+    height :55px;
+} */
+#admPnl div {
+    width: 47.5%;
+}
+#admPnl div:first-child {
+    font-size: 1rem;
+    padding: 11px 0 11px 1.5%;
     font-weight: bolder;
 }
+#admPnl div:last-child {
+    float: right;
+    margin-right: 4.5%;
+    width: 25% !important;
+}
+
+#admPgs {
+    margin-top: 55px;
+    overflow-y: scroll;
+    height: 100%;
+}
+.pg-title {
+    padding: 20px 0 4px 3%;
+    border-bottom: 1px solid #DDD; 
+    background-color: #FFF; 
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+         box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+}
+.pg-title #breadCrumb {
+    font-size: 0.75rem;
+}
+.pg-title #breadCrumb span,
+.pg-title #breadCrumb i {
+    color: #888;
+}
+.pg-title #breadCrumb span:last-child {
+    font-weight: bolder;
+    color: #331400;
+}
+.pg-content {
+    padding: 17px;
+}
+.boxes .box {
+    background-color: #FFF;
+    padding: 0;
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.55);
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.55);
+         box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.55);
+}
+.boxes .box h5 {
+    font-size: 0.85rem;
+    padding: 10px 0 10px 15px;
+    margin: 0;
+    font-weight: bolder;
+    color: #FFF;
+    background-color: #DF8527;
+    -webkit-box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.55);
+    -moz-box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.55);
+         box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.55);
+}
+.boxes .box h5 i {
+    margin-right: 4px;
+}
+.boxes .box ul {
+    list-style: none;
+    padding:0;
+}
+.boxes .box ul li {
+    cursor: pointer;
+    list-style: none;
+    padding: 10px 0px 10px 20px;
+    font-size: 0.80rem;
+    transition: all 0.2s ease-in-out;
+    font-weight: bold;
+}
+.boxes .box ul li:first-child {
+    color: #777;
+    cursor: default;
+}
+.boxes .box ul li i {
+    float: right;
+    margin-right: 10px;
+}
+.li-sub {
+    background-color: #EEE;
+    padding: 20px;
+    -webkit-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.75);
+       -moz-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.75);
+            box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.75);
+}
+.frm-def {
+    border:none;
+    border-bottom: 1px solid #CCC;
+    margin-bottom: 4px;
+    padding: 3px 15px 3px 15px;
+    font-size: 0.75rem;
+    height: 2rem;
+    outline: none;
+    background-color: transparent;
+    border-radius: 0;
+}
+.frm-def:focus {
+    transition: all 0.2s ease-in-out;
+}
+
 
 /* OVERRIDE */
 .ui-dialog-titlebar-close {
@@ -277,10 +393,8 @@ body {
 
 
 @media screen and (max-width: 1080px) {
-    #pgTitle {
-        font-size: 130%;
-        padding: 0.6% 0 0.6% 2.5%;
-        font-weight: bolder;
+    #admPnl div:first-child {
+        padding: 11px 0 11px 2.5%;
     }
     .sub-menu .logo {
         padding: 2% 0 2% 0;

@@ -17,7 +17,11 @@
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/jquery-ui.css">
 <link rel="stylesheet" href="../css/jquery-ui.structure.css">
-
+<style>
+    body {
+        overflow: hidden;
+    }
+</style>
 <body id="admIdx">
     <!-- REMOTE -->
 </body>

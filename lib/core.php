@@ -69,10 +69,11 @@ class Core {
         $conn   = new Conn;
         $link   = $conn->__init();
         $sql    = sprintf(
-                "SELECT *
-                 FROM t_user 
-                 WHERE USERNAME = '%s'
-                 AND PASSWORD = '%s'"
+                "SELECT U.*, E.* FROM t_user AS U
+                 INNER JOIN m_employee AS E
+                 ON U.ID_EMPLOYEE = E.ID_EMPLOYEE 
+                 WHERE U.USERNAME = '%s'
+                 AND U.PASSWORD = '%s'"
                 , $_SESSION['user']
                 , $_SESSION['pass']
         );
@@ -232,12 +233,6 @@ class Core {
         $link->close();
     }
 
-    public function __getUsrProfile() {
-        $conn = new Conn;
-        $link = $conn->__init();
-        $sql  = sprintf(
-            "SELECT "
-        );
-    }
+
 }
 ?>
