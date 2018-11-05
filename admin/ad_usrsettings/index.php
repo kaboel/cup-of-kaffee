@@ -46,8 +46,8 @@ $prefix = "cupofkaffee/";
                     <div class="li-sub">
                         <form id="ePass" action="" method="post">
                             <input name="oldp" type="password" class="form-control frm-def" placeholder="Old Password" required>
-                            <input name="newp" type="password" class="form-control frm-def" placeholder="New Password" required>
-                            <input name="verp" type="password" class="form-control frm-def" placeholder="Confirm Password">
+                            <input name="newp" type="password" class="form-control frm-def gap-20" placeholder="New Password" required>
+                            <input name="verp" type="password" class="form-control frm-def" placeholder="Confirm Password" required>
                             <p id="Notif" style="text-align:center;font-size:0.75rem;margin:10px 0 0 0;font-style:italic;font-weight:bold;">&nbsp;</p>
                             <div class="text-right">
                                 <input type="reset" value="Reset" class="btn btn-sm btn-kaffee btn-fixed gap-20">
@@ -66,11 +66,12 @@ $(function() {
     loadMe(<?= $eid ?>);
 });
 $('#ePass').on('submit', function(_e) {
+    resetCol();
     _e.preventDefault();
     var exec  = "reqChgPass";
     var Notif = $("#Notif");
     var Msg   = "";
-    var Css   = "";
+    var Css   = "red";
     var oldp  = $( this ).find('input[name="oldp"]').val();
     var newp  = $( this ).find('input[name="newp"]').val();
     var verp  = $( this ).find('input[name="verp"]').val();
@@ -80,15 +81,18 @@ $('#ePass').on('submit', function(_e) {
         data: 'exec='+exec+'&oldp='+oldp+'&newp='+newp+'&verp='+verp,
         url : '../lib/handler.php',
         success : function(_e){
-            if(_e == 1) {
+            if(_e == "SUCCESS") {
                 Msg+="Password Updated.";
-                Css+="green";
-            } else if(_e == 0) {
+                Css ="green";
+            } else if(_e == "ERR") {
                 Msg+="Please try again later";
-                Css+="red";
-            } else {
-                Msg+=_e;
-                Css+="red";
+            } else if(_e == "Old-Inval") {
+                Msg+="Old password invalid.";
+                $('input[name="oldp"]').css("border-color", "red");
+            } else if(_e == "New-Inval") {
+                Msg+="New password doesn't match.";
+                $('input[name="newp"]').css("border-color", "red");
+                $('input[name="verp"]').css("border-color", "red");
             }
             Notif.empty().append(Msg).css("color", Css);
         }
@@ -96,5 +100,11 @@ $('#ePass').on('submit', function(_e) {
 });
 $('#ePass').on('reset', function(_e) {
     $("#Notif").empty().append("&nbsp;").css("color", "inherit");
+    resetCol();
 });
+function resetCol() {
+    $('input[name="oldp"]').css("border-color", "#CCC");
+    $('input[name="newp"]').css("border-color", "#CCC");
+    $('input[name="verp"]').css("border-color", "#CCC");
+}
 </script>

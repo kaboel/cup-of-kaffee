@@ -313,9 +313,9 @@ class Core {
         $verpass    = md5($verpass);
 
         if(!self::__passVerify($param)) {
-            return "Old Password Invalid.";
+            return "Old-Inval";
         } else if($newpass != $verpass) {
-            return "New Password doesn't match.";
+            return "New-Inval";
         } else {
             $conn = new Conn;
             $link = $conn->__init();
@@ -327,9 +327,9 @@ class Core {
                 , $oldpass
             );
             if($sql = $link->query($sql)) {
-                return "1";
+                return "SUCCESS";
             } else {
-                return "0";
+                return "ERR";
             }
             $link->close();
         }
