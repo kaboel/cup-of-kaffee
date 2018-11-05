@@ -15,8 +15,8 @@ class Core {
 
     public static function __sesVerify() {
         return ( 
-            isset($_SESSION['uid']) && 
-            isset($_SESSION['user']) && 
+            isset($_SESSION['uid'])     && 
+            isset($_SESSION['user'])    && 
             isset($_SESSION['pass'])
         );
     }
@@ -34,7 +34,6 @@ class Core {
     // }
 
     public static function __locVerify() {
-        $uri = "http://127.0.0.1:8080/cupofkaffee/forbid";
         if(!self::__httpVerify()) {
             header('header("HTTP/1.1 403 Forbidden', true, 403);
             header('Location: /cupofkaffee/errors/oops?');
@@ -58,10 +57,10 @@ class Core {
 
         if(self::__sesVerify()) {
             // $_SESSION['pgac'] = "admMain";
-            echo "<script>loadAdm('main');</script>";
+            echo "<script>loadAdm('main')</script>";
         } else {
             // $_SESSION['pgac'] = "admLogin";
-            echo "<script>loadAdm('login');</script>";
+            echo "<script>loadAdm('login')</script>";
         }
     }
 
@@ -69,13 +68,13 @@ class Core {
         $conn   = new Conn;
         $link   = $conn->__init();
         $sql    = sprintf(
-                "SELECT U.*, E.* FROM t_user AS U
-                 INNER JOIN m_employee AS E
-                 ON U.ID_EMPLOYEE = E.ID_EMPLOYEE 
-                 WHERE U.USERNAME = '%s'
-                 AND U.PASSWORD = '%s'"
-                , $_SESSION['user']
-                , $_SESSION['pass']
+            "SELECT U.*, E.* FROM t_user AS U
+                INNER JOIN m_employee AS E
+                ON U.ID_EMPLOYEE = E.ID_EMPLOYEE 
+                WHERE U.USERNAME = '%s'
+                AND U.PASSWORD = '%s'"
+            , $_SESSION['user']
+            , $_SESSION['pass']
         );
         if($sql = $link->query($sql)) {
             $data = $sql->fetch_assoc();
@@ -83,7 +82,31 @@ class Core {
         } else {
             return "0";
         }
+        $link->close();
     }  
+
+    public static function __passVerify($param) {
+        $conn   = new Conn;
+        $link   = $conn->__init();
+        $param  = md5($param);
+        $sql    = sprintf(
+            "SELECT PASSWORD AS PASS
+             FROM t_user 
+             WHERE PASSWORD = '%s'"
+            , $param
+        );
+        if($sql = $link->query($sql)) {
+            if($sql->num_rows == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+
+        $link->close();
+    }
 
     // AJAX CALLBACKS
     public function __loginExec($user, $pass) {
@@ -162,11 +185,11 @@ class Core {
         $permit = self::__getUsrInfo("PERMIT");
 
         $sql    = sprintf(
-                "SELECT ID_MENU, TITLE, STR_ID, ICON, PATH
-                 FROM t_menu
-                 WHERE PERMIT <= '%d'
-                 AND ID_SUPER <= '1'"
-                , $permit
+            "SELECT ID_MENU, TITLE, STR_ID, ICON, PATH
+                FROM t_menu
+                WHERE PERMIT <= '%d'
+                AND ID_SUPER <= '1'"
+            , $permit
         );        
         if($sql = $link->query($sql)) {
             while($arr = $sql->fetch_assoc()) {
@@ -233,6 +256,83 @@ class Core {
         $link->close();
     }
 
+    
+    public function __getEmProfile($usrid) {
+        $conn   = new Conn;
+        $link   = $conn->__init();
+        $sql    = NULL;
+        if($usrid == 0) {
+            $sql = sprintf(
+                "SELECT 
+                    E.ID_EMPLOYEE, E.PICTURE, E.BIRTH_DATE, E.ADDRESS, E.PHONE,
+                    CONCAT(E.FIRST_NAME, ' ', E.LAST_NAME) AS FULL_NAME,
+                    IF(E.GENDER > 0, 'Male', 'Female') AS GENDER,
+                    IF(E.POSITION > 0, 'Supervisor', 'Employee') AS POSITION,
+                    IF(U.PERMIT > 0, 'Superuser', 'Limited') AS PERMIT, 
+                    IF(U.ACTIVE < 1, 'Active', 'Disabled') AS ACTIVE, 
+                    U.DELETED
+                 FROM m_employee AS E
+                 INNER JOIN t_user AS U 
+                 ON E.ID_EMPLOYEE = U.ID_EMPLOYEE"
+            );
+        } else {
+            $sql = sprintf(
+                "SELECT 
+                    E.ID_EMPLOYEE, E.PICTURE, E.BIRTH_DATE, E.ADDRESS, E.PHONE,
+                    CONCAT(E.FIRST_NAME, ' ', E.LAST_NAME) AS FULL_NAME,
+                    IF(E.GENDER > 0, 'Male', 'Female') AS GENDER,
+                    IF(E.POSITION > 0, 'Supervisor', 'Employee') AS POSITION,
+                    IF(U.PERMIT > 0, 'Superuser', 'Limited') AS PERMIT
+                 FROM m_employee AS E
+                 INNER JOIN t_user AS U 
+                 ON E.ID_EMPLOYEE = U.ID_EMPLOYEE
+                 WHERE E.ID_EMPLOYEE = '%d'"
+                , $usrid 
+            );
+        }
+        if($sql = $link->query($sql)) {
+            if($sql->num_rows > 0) {
+                while($arr = $sql->fetch_assoc()) {
+                    $data[] = $arr;
+                }
+                return json_encode($data);
+                die();
+            } else {
+                return "0";
+            }
+        } else {
+            return "0";
+        }
+        $link->close();
+    }
 
+    public function __editPass($oldpass, $newpass, $verpass) {
+        $param      = $oldpass;
+        $oldpass    = md5($oldpass);
+        $newpass    = md5($newpass);
+        $verpass    = md5($verpass);
+
+        if(!self::__passVerify($param)) {
+            return "Old Password Invalid.";
+        } else if($newpass != $verpass) {
+            return "New Password doesn't match.";
+        } else {
+            $conn = new Conn;
+            $link = $conn->__init();
+            $sql  = sprintf(
+                "UPDATE t_user SET
+                 PASSWORD = '%s'
+                 WHERE PASSWORD = '%s'"
+                , $newpass
+                , $oldpass
+            );
+            if($sql = $link->query($sql)) {
+                return "1";
+            } else {
+                return "0";
+            }
+            $link->close();
+        }
+    }
 }
 ?>

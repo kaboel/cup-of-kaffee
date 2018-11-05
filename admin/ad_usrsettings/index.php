@@ -3,7 +3,8 @@ error_reporting(E_ALL ^ E_NOTICE);
 require_once('../../lib/core.php');
 $core = new Core;
 $core::__locVerify();
-$un = $core::__getUsrInfo("FIRST_NAME"). " " .$core::__getUsrInfo("LAST_NAME");
+$eid = $core::__getUsrInfo("ID_EMPLOYEE");
+$prefix = "cupofkaffee/";
 
 ?>
 
@@ -43,13 +44,14 @@ $un = $core::__getUsrInfo("FIRST_NAME"). " " .$core::__getUsrInfo("LAST_NAME");
                 <ul>
                     <li><i class="fas fa-caret-down"></i> Change Password</li>
                     <div class="li-sub">
-                        <form action="" method="post">
-                            <input name="old" type="password" class="form-control frm-def" placeholder="Old Password">
-                            <input name="new" type="password" class="form-control frm-def gap-20" placeholder="New Password">
-                            <input name="ver" type="password" class="form-control frm-def" placeholder="Confirm Password">
+                        <form id="ePass" action="" method="post">
+                            <input name="oldp" type="password" class="form-control frm-def" placeholder="Old Password" required>
+                            <input name="newp" type="password" class="form-control frm-def" placeholder="New Password" required>
+                            <input name="verp" type="password" class="form-control frm-def" placeholder="Confirm Password">
+                            <p id="Notif" style="text-align:center;font-size:0.75rem;margin:10px 0 0 0;font-style:italic;font-weight:bold;">&nbsp;</p>
                             <div class="text-right">
                                 <input type="reset" value="Reset" class="btn btn-sm btn-kaffee btn-fixed gap-20">
-                                <input type="button" value="Save" class="btn btn-sm btn-kaffee btn-fixed gap-20">
+                                <input type="submit" value="Save" class="btn btn-sm btn-kaffee btn-fixed gap-20">
                             </div>
                         </form>
                     </div>
@@ -59,7 +61,40 @@ $un = $core::__getUsrInfo("FIRST_NAME"). " " .$core::__getUsrInfo("LAST_NAME");
         </div>
     </div>
 </div>
-
 <script>
+$(function() {
+    loadMe(<?= $eid ?>);
+});
+$('#ePass').on('submit', function(_e) {
+    _e.preventDefault();
+    var exec  = "reqChgPass";
+    var Notif = $("#Notif");
+    var Msg   = "";
+    var Css   = "";
+    var oldp  = $( this ).find('input[name="oldp"]').val();
+    var newp  = $( this ).find('input[name="newp"]').val();
+    var verp  = $( this ).find('input[name="verp"]').val();
 
+    $.ajax({
+        type: 'GET',
+        data: 'exec='+exec+'&oldp='+oldp+'&newp='+newp+'&verp='+verp,
+        url : '../lib/handler.php',
+        success : function(_e){
+            if(_e == 1) {
+                Msg+="Password Updated.";
+                Css+="green";
+            } else if(_e == 0) {
+                Msg+="Please try again later";
+                Css+="red";
+            } else {
+                Msg+=_e;
+                Css+="red";
+            }
+            Notif.empty().append(Msg).css("color", Css);
+        }
+    });
+});
+$('#ePass').on('reset', function(_e) {
+    $("#Notif").empty().append("&nbsp;").css("color", "inherit");
+});
 </script>

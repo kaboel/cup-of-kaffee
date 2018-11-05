@@ -90,8 +90,8 @@ function __loadPage(pgid) {
                 var subtl = obj['SUB_TITLE'];
                 var subid = obj['SUB_STRID'];
                 setTimeout( function() {
-                    cont.empty().load(path+"/", function() {
-                        $( this ).fadeIn('300');
+                    cont.empty().load(path+"/index", function() {
+                        $( this ).slideDown('300');
                     });
                 }, 300);
             }
@@ -188,7 +188,21 @@ function logoutExec() {
 }
 
 // INDIVIDUAL PAGES REMOTES AND EXECS
-
+function loadMe(param) { // <-- * ad_usrsettings
+    var exec = "reqEmProfile";
+    
+    $.ajax({
+        type:   'GET',
+        data:   'exec='+exec+"&usrid="+param,
+        url :   '../lib/handler',
+        success : function(_e) {
+            if(_e != "0") {
+                var obj = JSON.parse(_e);
+                console.log(obj);
+            }
+        }
+    });
+}
 
 
 // OTHER(S)

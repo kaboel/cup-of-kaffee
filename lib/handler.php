@@ -1,4 +1,9 @@
 <?php
+//
+//  * cupofkaffee v.1 (https://github.com/kaboel/cupofkaffee)
+//  * Copyright 2018 faiq.kaboel@gmail.com | In Effect
+//
+
     include('core.php');
 
     if(isset($_GET['exec']) && $_GET['exec'] === "sessionVerify") {
@@ -8,7 +13,14 @@
         } else {
             echo "0";
         }
+
+        //echo
+        exit;
     }
+
+
+// -----------------------------------------------------------------------------------------
+
 
     if(isset($_GET['exec']) && $_GET['exec'] === "loginReq") {
         $core = new Core;
@@ -80,7 +92,28 @@
         exit;
     }
 
-    if(isset($_GET['exec']) && $_GET['exec'] === "userProfileReq") {
-        
+    if(isset($_GET['exec']) && $_GET['exec'] === "reqEmProfile") {
+        $core   = new Core;
+        $usrid  = $_GET['usrid'];
+        $data   = $core->__getEmProfile($usrid);
+        if($data != "0") {
+            echo $data;
+        } else {
+            echo "0";
+        }
+
+        //echo
+        exit;
+    }
+
+    if(isset($_GET['exec']) && $_GET['exec'] === 'reqChgPass') {
+        $core = new Core;
+        $oldpass    = $_GET['oldp'];
+        $newpass    = $_GET['newp'];
+        $verpass    = $_GET['verp'];
+        $data = $core->__editPass($oldpass, $newpass, $verpass);
+        echo $data;
+
+        exit;
     }
 ?>
