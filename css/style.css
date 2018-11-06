@@ -185,8 +185,8 @@ body {
     margin-left: -10px !important;
 }
 .admin-content {
-    width: 95.5%;
-    margin-left: 4.5%;
+    width: 96%;
+    margin-left: 4%;
 }
 .p-menu, .s-menu {
     padding: 0;
@@ -292,7 +292,7 @@ body {
 }
 #admPnl div:last-child {
     float: right;
-    margin-right: 4.5%;
+    margin-right: 4%;
     width: 25% !important;
 }
 
@@ -386,11 +386,18 @@ body {
 .frm-def:focus {
     transition: all 0.2s ease-in-out;
 }
+#profileBox {
+    padding: 10px;
+}
 
 
 /* OVERRIDE */
 .ui-dialog-titlebar-close {
     display: none !important;
+}
+.table td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
 }
 
 

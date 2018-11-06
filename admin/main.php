@@ -4,11 +4,11 @@ require_once('../lib/core.php');
 $core = new Core;
 $core::__locVerify();
 $up = "../". $core::__getUsrInfo("PICTURE");
-$un = $core::__getUsrInfo("FIRST_NAME"). " " .$core::__getUsrInfo("LAST_NAME");
+$un = $core::__getUsrInfo("FULL_NAME");
 ?>
 
 <div class="admin-menu wrap">
-    <div class="menu-panel-menu main-menu">
+    <div class="menu-panel-menu main-menu" style="width: 56px;">
         <div class="logo">
             <img src="<?= $up ?>" alt="" width="40" height="40">
         </div>

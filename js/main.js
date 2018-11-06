@@ -187,10 +187,9 @@ function logoutExec() {
     return false;
 }
 
-// INDIVIDUAL PAGES REMOTES AND EXECS
-function loadMe(param) { // <-- * ad_usrsettings
+//INDIVIDUAL PAGES 
+function __loadEm(param) {
     var exec = "reqEmProfile";
-    
     $.ajax({
         type:   'GET',
         data:   'exec='+exec+"&usrid="+param,

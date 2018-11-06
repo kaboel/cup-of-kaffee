@@ -10,9 +10,15 @@ session_start([
 include('conn.php');
 
 class Core {
-    //SESSION CONTROL
-    public function __construct() { }
+    private static $__prefix = "";
 
+    public function __construct() { self::$__prefix = "../"; }
+
+    public static function __prefix() {
+        return self::$__prefix;
+    }
+
+    //SESSION CONTROL
     public static function __sesVerify() {
         return ( 
             isset($_SESSION['uid'])     && 
@@ -68,11 +74,13 @@ class Core {
         $conn   = new Conn;
         $link   = $conn->__init();
         $sql    = sprintf(
-            "SELECT U.*, E.* FROM t_user AS U
-                INNER JOIN m_employee AS E
-                ON U.ID_EMPLOYEE = E.ID_EMPLOYEE 
-                WHERE U.USERNAME = '%s'
-                AND U.PASSWORD = '%s'"
+            "SELECT U.*, E.*, 
+             CONCAT(E.FIRST_NAME, ' ', LAST_NAME) AS FULL_NAME
+             FROM t_user AS U
+             INNER JOIN m_employee AS E
+             ON U.ID_EMPLOYEE = E.ID_EMPLOYEE 
+             WHERE U.USERNAME = '%s'
+             AND U.PASSWORD = '%s'"
             , $_SESSION['user']
             , $_SESSION['pass']
         );

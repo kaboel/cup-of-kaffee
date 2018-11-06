@@ -3,9 +3,10 @@ error_reporting(E_ALL ^ E_NOTICE);
 require_once('../../lib/core.php');
 $core = new Core;
 $core::__locVerify();
-$eid = $core::__getUsrInfo("ID_EMPLOYEE");
-$prefix = "cupofkaffee/";
+$prefix = $core::__prefix();
 
+$eid    = $core::__getUsrInfo("ID_EMPLOYEE");
+$eimg   = $core::__getUsrInfo("PICTURE");
 ?>
 
 <div class="pg-title">
@@ -21,18 +22,52 @@ $prefix = "cupofkaffee/";
 <div class="pg-content">
     <div class="row boxes">
         <div class="col-md-8">
-            <div id="profileInfo" class="box">
+            <div class="box">
                 <h5><!-- Title -->
                     <i class="fas fa-user"></i>
                     <span>Profile Information</span>
                 </h5>
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <form method="post" action="">
+                <div id="profileBox" class="row">
+                    <div class="col-md-4">
+                        
+                    </div>
+                    <div class="col">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td class="text-right">Hello</td>
+                                    <td>Hello</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right">Hello</td>
+                                    <td>Hello</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right">Hello</td>
+                                    <td>Hello</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right">Hello</td>
+                                    <td>Hello</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right">Hello</td>
+                                    <td>Hello</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right">Hello</td>
+                                    <td>Hello</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right">Hello</td>
+                                    <td>Hello</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </form>
             </div>
         </div>
         <div class="col">
@@ -55,7 +90,7 @@ $prefix = "cupofkaffee/";
                             </div>
                         </form>
                     </div>
-                    <li>Update Profile</li>
+                    <li id="eProfile">Update Profile</li>
                 </ul>
             </div>
         </div>
@@ -63,8 +98,15 @@ $prefix = "cupofkaffee/";
 </div>
 <script>
 $(function() {
-    loadMe(<?= $eid ?>);
+     
+    $("#meBox").empty().load("ad_usersettings/profile");
 });
+
+$("#eProfile").on('click', function(_e) {
+    var cont = $("#profileBox");
+    
+});
+
 $('#ePass').on('submit', function(_e) {
     resetCol();
     _e.preventDefault();
@@ -79,7 +121,7 @@ $('#ePass').on('submit', function(_e) {
     $.ajax({
         type: 'GET',
         data: 'exec='+exec+'&oldp='+oldp+'&newp='+newp+'&verp='+verp,
-        url : '../lib/handler.php',
+        url : '../lib/handler',
         success : function(_e){
             if(_e == "SUCCESS") {
                 Msg+="Password Updated.";
@@ -107,4 +149,5 @@ function resetCol() {
     $('input[name="newp"]').css("border-color", "#CCC");
     $('input[name="verp"]').css("border-color", "#CCC");
 }
+
 </script>
