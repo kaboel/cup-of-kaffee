@@ -124,17 +124,22 @@ $('#ePass').on('submit', function(_e) {
         url : '../lib/handler',
         success : function(_e){
             if(_e == "SUCCESS") {
+                resetCol();
                 Msg+="Password Updated.";
                 Css ="green";
             } else if(_e == "ERR") {
-                Msg+="Please try again later";
+                resetCol();
+                Msg+="Please try again later.";
             } else if(_e == "Old-Inval") {
                 Msg+="Old password invalid.";
                 $('input[name="oldp"]').css("border-color", "red");
+                $('input[name="oldp"]').css("color", "red");
             } else if(_e == "New-Inval") {
                 Msg+="New password doesn't match.";
                 $('input[name="newp"]').css("border-color", "red");
                 $('input[name="verp"]').css("border-color", "red");
+                $('input[name="newp"]').css("color", "red");
+                $('input[name="verp"]').css("color", "red");
             }
             Notif.empty().append(Msg).css("color", Css);
         }
@@ -146,8 +151,11 @@ $('#ePass').on('reset', function(_e) {
 });
 function resetCol() {
     $('input[name="oldp"]').css("border-color", "#CCC");
+    $('input[name="oldp"]').css("color", "inherit");
     $('input[name="newp"]').css("border-color", "#CCC");
+    $('input[name="newp"]').css("color", "inherit");
     $('input[name="verp"]').css("border-color", "#CCC");
+    $('input[name="verp"]').css("color", "inherit");
 }
 
 </script>

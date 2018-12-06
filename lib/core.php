@@ -194,9 +194,9 @@ class Core {
 
         $sql    = sprintf(
             "SELECT ID_MENU, TITLE, STR_ID, ICON, PATH
-                FROM t_menu
-                WHERE PERMIT <= '%d'
-                AND ID_SUPER <= '1'"
+             FROM t_menu
+             WHERE PERMIT <= '%d'
+             AND ID_SUPER <= '1'"
             , $permit
         );        
         if($sql = $link->query($sql)) {
