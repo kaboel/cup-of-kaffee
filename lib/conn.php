@@ -16,7 +16,12 @@ class Conn {
 
     public function __init() {
         if (!self::$__Conn) {
-            self::$__Conn = new mysqli(self::$__Host, self::$__User, self::$__Pass, self::$__Name);
+            self::$__Conn = new mysqli(
+                self::$__Host, 
+                self::$__User, 
+                self::$__Pass, 
+                self::$__Name
+            );
             if (self::$__Conn -> connect_error) {
                 die("Connect Error: " . self::$__Conn->connect_error);
             }
