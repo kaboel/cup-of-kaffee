@@ -45,17 +45,17 @@ class Core {
             header('Location: /cupofkaffee/errors/oops?');
         }
 
-        // if(self::__accVerify()) {
-        //     if($_SESSION['pgac'] != $param) {
-        //         header('location:index.php');
-        //         die();
-        //     } else {
-        //         $_SESSION['pgac'] = "0";
-        //     }
-        // } else {
-        //     $_SESSION['pgac'] = "0";
-        //     header("Refresh:0; url=index.php");
-        // }
+    // if(self::__accVerify()) {
+    //     if($_SESSION['pgac'] != $param) {
+    //         header('location:index.php');
+    //         die();
+    //     } else {
+    //         $_SESSION['pgac'] = "0";
+    //     }
+    // } else {
+    //     $_SESSION['pgac'] = "0";
+    //     header("Refresh:0; url=index.php");
+    // }
     } 
 
     public static function __loginVerify() {

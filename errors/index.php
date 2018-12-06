@@ -55,7 +55,7 @@ if(isset($_GET['errno'])) {
 			<h1><?= $errno ?><br><small><?= $error ?></small></h1>
 			<p><?= $ermsg ?></p>
 			<a href="#" onclick="back()">Back To Previous</a>
-			<a href="<?= $homep ?>">Home Page</a>
+			<a href="http://127.0.0.1:8080/cupofkaffee/">Home Page</a>
 		</div>
 	</div>
 </body>
