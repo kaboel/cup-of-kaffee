@@ -4,7 +4,6 @@ require_once('../../lib/core.php');
 $core = new Core;
 $core::__locVerify();
 $prefix = $core::__prefix();
-
 $eid    = $core::__getUsrInfo("ID_EMPLOYEE");
 $eimg   = $core::__getUsrInfo("PICTURE");
 ?>
@@ -36,35 +35,57 @@ $eimg   = $core::__getUsrInfo("PICTURE");
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <td class="text-right">Hello</td>
-                                    <td>Hello</td>
+                                    <td width="170" class="text-right centralized"><b>Full Name :</b></td>
+                                    <td>
+                                        <input type="text" name="" id="" class="form-control frm-def">
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td class="text-right">Hello</td>
-                                    <td>Hello</td>
+                                    <td class="text-right centralized"><b>Gender :</b></td>
+                                    <td>
+                                        <div class="merge-inputs">
+                                            <div>
+                                                <input type="radio" name="gender" value="1" id="radL" class="">
+                                                <label for="radL">Laki - Laki</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" name="gender" value="0" id="radP" class="">
+                                                <label for="radP">Perempuan</label>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td class="text-right">Hello</td>
-                                    <td>Hello</td>
+                                    <td class="text-right centralized"><b>Place & Date Of Birth :</b></td>
+                                    <td>
+                                        <div class="merge-inputs">
+                                            <input type="text" name="gender" value="" id="radL" class="">
+                                            <input type="text" name="gender" value="" id="radP" class="">
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td class="text-right">Hello</td>
-                                    <td>Hello</td>
+                                    <td class="text-right centralized"><b>Home Address :</b></td>
+                                    <td>
+                                        <input type="text" name="" id="" class="form-control frm-def">
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td class="text-right">Hello</td>
-                                    <td>Hello</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-right">Hello</td>
-                                    <td>Hello</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-right">Hello</td>
-                                    <td>Hello</td>
+                                    <td class="text-right centralized"><b>Phone Number :</b></td>
+                                    <td>
+                                        <input type="text" name="" id="" class="form-control frm-def">
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-right">
+                        <div class="btn-field">
+                            <input type="reset" value="Reset" class="btn btn-sm btn-kaffee btn-fixed">
+                            <input type="submit" value="Save" class="btn btn-sm btn-kaffee btn-fixed">
+                        </div>
                     </div>
                 </div>
                 </form>
@@ -79,14 +100,14 @@ $eimg   = $core::__getUsrInfo("PICTURE");
                 <ul>
                     <li><i class="fas fa-caret-down"></i> Change Password</li>
                     <div class="li-sub">
-                        <form id="ePass" action="" method="post">
+                        <form id="ePassFrm" action="" method="post">
                             <input name="oldp" type="password" class="form-control frm-def" placeholder="Old Password" required>
                             <input name="newp" type="password" class="form-control frm-def gap-20" placeholder="New Password" required>
                             <input name="verp" type="password" class="form-control frm-def" placeholder="Confirm Password" required>
-                            <p id="Notif" style="text-align:center;font-size:0.75rem;margin:10px 0 0 0;font-style:italic;font-weight:bold;">&nbsp;</p>
-                            <div class="text-right">
-                                <input type="reset" value="Reset" class="btn btn-sm btn-kaffee btn-fixed gap-20">
-                                <input type="submit" value="Save" class="btn btn-sm btn-kaffee btn-fixed gap-20">
+                            <p id="Notif" style="text-align:center;font-size:0.75rem;margin:10px 0 0 0;font-style:italic;font-weight:bold;">Fill all the blanks.</p>
+                            <div class="btn-field">
+                                <input type="reset" value="Reset" class="btn btn-sm btn-kaffee btn-fixed">
+                                <input type="submit" value="Save" class="btn btn-sm btn-kaffee btn-fixed">
                             </div>
                         </form>
                     </div>
@@ -98,16 +119,15 @@ $eimg   = $core::__getUsrInfo("PICTURE");
 </div>
 <script>
 $(function() {
-     
     $("#meBox").empty().load("ad_usersettings/profile");
 });
 
-$("#eProfile").on('click', function(_e) {
-    var cont = $("#profileBox");
+$("#eProfileFrm").on('submit', function(_e) {
+    
     
 });
 
-$('#ePass').on('submit', function(_e) {
+$('#ePassFrm').on('submit', function(_e) {
     resetCol();
     _e.preventDefault();
     var exec  = "reqChgPass";
@@ -125,7 +145,7 @@ $('#ePass').on('submit', function(_e) {
         success : function(_e){
             if(_e == "SUCCESS") {
                 resetCol();
-                Msg+="Password Updated.";
+                Msg+="Password Updated.<br>Please Logout then Relogin.";
                 Css ="green";
             } else if(_e == "ERR") {
                 resetCol();
@@ -145,8 +165,8 @@ $('#ePass').on('submit', function(_e) {
         }
     });
 });
-$('#ePass').on('reset', function(_e) {
-    $("#Notif").empty().append("&nbsp;").css("color", "inherit");
+$('#ePassFrm').on('reset', function(_e) {
+    $("#Notif").empty().append("Fill all the blanks.").css("color", "inherit");
     resetCol();
 });
 function resetCol() {

@@ -12,6 +12,9 @@
 html, body, div, table, ul, h1, h2, p, span, input, button, label {
     font-family: 'oxygenregular' !important;
 }
+label {
+    vertical-align: middle !important;
+}
 span { 
     cursor: default;
 }
@@ -387,10 +390,28 @@ body {
     transition: all 0.2s ease-in-out;
 }
 #profileBox {
-    padding: 10px;
+    padding: 20px;
 }
-
-
+#profileBox table th,
+#profileBox table td {
+    border-color: transparent;
+}
+.centralized {
+    vertical-align: middle !important;
+}
+.btn-field {
+    text-align: right;
+    padding: 10px;
+    vertical-align: middle;
+    margin-top: 10px;
+    border-top: 1px solid #DDD;
+}
+.merge-inputs div,
+.merge-inputs input[type="text"] {
+    vertical-align: middle;
+    width: 49%;
+    display: inline-block;
+}
 /* OVERRIDE */
 .ui-dialog-titlebar-close {
     display: none !important;

@@ -80,9 +80,9 @@ class Core {
              INNER JOIN m_employee AS E
              ON U.ID_EMPLOYEE = E.ID_EMPLOYEE 
              WHERE U.USERNAME = '%s'
-             AND U.PASSWORD = '%s'"
+             AND U.ID_USER = '%s'"
             , $_SESSION['user']
-            , $_SESSION['pass']
+            , $_SESSION['uid']
         );
         if($sql = $link->query($sql)) {
             $data = $sql->fetch_assoc();

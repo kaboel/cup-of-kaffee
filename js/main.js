@@ -142,7 +142,7 @@ function loginExec() {
 }
 
 // Logout
-function logoutExec() {
+function logoutExec(param) {
     var exec = "logoutReq";
     
     var obj = "<div> You sure you want to go ? </div>";
